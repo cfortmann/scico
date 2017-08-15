@@ -89,7 +89,7 @@
 	      $x_i = \frac{1}{u_{ii}} (y_i - \sum_{j=i+1}^{m} u_{ij}x_j)$ für $i = m-1, \dots, 1$. }}
 
 	\item \textbf{ Wie kann man \luf stabiler machen?}\newline
-	\fbox{\parbox[c]{\textwidth}{Pivotisierung der Matrix, mittels Permutationsmatrix.}}
+	\fbox{\parbox[c]{\textwidth}{Pivotisierung der Matrix, mittels Permutationsmatrix. Vertausche den maximalen Eintrag $a_{ik}^k$ der Spalte mit dem Element auf der Diagonalen $a_{kk}^k$. }}
 	\item \textbf{ Was ist der Aufwand?} \newline
 	\fbox{\parbox[c]{\textwidth}{$PA=LU$: $\frac{2}{3}m^3$ FLOPs.}}
 	\item \textbf{ Wann geht der \luf kaputt?} \newline
@@ -104,15 +104,15 @@
 	\item \textbf{ Was ist der Unterschied zwischen Approximation und Interpolation?} \newline
 	   \fbox{\parbox[c]{\textwidth}{   Polynomgrad bzw. Dimensionen der Matrix $A^{m \times n}$.\\
 	      \begin{itemize}
-	      \item  $m = n$: $A$ quadratisch, voller Rang, existiert inverse, dann eindeutige Lösung.
-              \item  $m > n$: System überbestimmt, nicht exakt lösbar. Approximation.  
+	      \item  $m = n$: $A$ quadratisch, voller Rang, existiert inverse, dann eindeutige Lösung. $\Rightarrow$ Interpolation
+              \item  $m > n$: System überbestimmt, nicht exakt lösbar. $\Rightarrow$ Approximation.  
               \end{itemize}}}
 	\item \textbf{ Wie kann ein überbestimmtes Gleichungssystem approximiert werden?}\newline
 	\fbox{\parbox[c]{\textwidth}{Normalengleichung mit folgender \luf, \chf, SVD,..}}
 	\item \textbf{ Warum sollte man manchmal ein Polynom kleineren Grades finden?} \newline
 	\fbox{\parbox[c]{\textwidth}{Durch ein Polynom mit einem kleineren Grad können verrauschte Daten besser approximiert werden. }}
 	\item \textbf{ Was ist der Grad eines Polynomes?}\newline
-	\fbox{\parbox[c]{\textwidth}{Der grad eines Polynoms entspricht dessen höchster Potenz}}
+	\fbox{\parbox[c]{\textwidth}{Der Grad eines Polynoms entspricht dessen höchster Potenz}}
 	\item \textbf{ Was sind Normalengleichungen und wie sind sie definiert? Welche Dim hat $A^TA$?}\newline
              \fbox{\parbox[c]{\textwidth}{ Erster Teil siehe nächste Frage/Antwort.\\
               $A^TA \in (n \times n)$.}}
