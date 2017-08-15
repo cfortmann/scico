@@ -104,7 +104,7 @@
 	\item \textbf{ Was ist der Unterschied zwischen Approximation und Interpolation?} \newline
 	   \fbox{\parbox[c]{\textwidth}{   Polynomgrad bzw. Dimensionen der Matrix $A^{m \times n}$.\\
 	      \begin{itemize}
-	      \item  $m = n$: $A$ quadratisch, voller Rang, existiert inverse, dann eindeutige Lösung. $\Rightarrow$ Interpolation
+	      \item  $m = n$: $A$ quadratisch, voller Rang, existiert Inverse, dann eindeutige Lösung. $\Rightarrow$ Interpolation
               \item  $m > n$: System überbestimmt, nicht exakt lösbar. $\Rightarrow$ Approximation.  
               \end{itemize}}}
 	\item \textbf{ Wie kann ein überbestimmtes Gleichungssystem approximiert werden?}\newline
@@ -112,8 +112,8 @@
 	\item \textbf{ Warum sollte man manchmal ein Polynom kleineren Grades finden?} \newline
 	\fbox{\parbox[c]{\textwidth}{Durch ein Polynom mit einem kleineren Grad können verrauschte Daten besser approximiert werden. }}
 	\item \textbf{ Was ist der Grad eines Polynomes?}\newline
-	\fbox{\parbox[c]{\textwidth}{Der Grad eines Polynoms entspricht dessen höchster Potenz}}
-	\item \textbf{ Was sind Normalengleichungen und wie sind sie definiert? Welche Dim hat $A^TA$?}\newline
+	\fbox{\parbox[c]{\textwidth}{Der Grad eines Polynoms entspricht dessen höchster Potenz.}}
+	\item \textbf{ Was sind Normalengleichungen und wie sind sie definiert? Welche Dimension hat $A^TA$?}\newline
              \fbox{\parbox[c]{\textwidth}{ Erster Teil siehe nächste Frage/Antwort.\\
               $A^TA \in (n \times n)$.}}
 	\item \textbf{ Wie leitet man die Normalengleichung her?}\newline
@@ -128,9 +128,11 @@
 	&\Leftrightarrow A^T(b-Ax)=0\\
 	&\Leftrightarrow A^Tb-A^TAx=0\\
 	&\Leftrightarrow A^TAx=A^Tb
-	\end{align*}}}
+	\end{align*}\\
+	\includegraphics[scale=0.3]{GeoHer}
+	}}
 	\item \textbf{ Was ist die 2-Norm?} \newline
-	\fbox{\parbox[c]{\textwidth}{$||x||_2=\sqrt{\sum_i x_i^2}$}}
+	\fbox{\parbox[c]{\textwidth}{ $|\displaystyle|x||_2=\sqrt{\sum_i x_i^2}$}}
 	\item \textbf{ Wann ist eine Matrix symmetrisch positiv definit?}\newline
 	\fbox{\parbox[c]{\textwidth}{Eine Matrix is symmetrisch wenn: $A^T=A$ und sie ist positiv definit wenn gilt: $\forall x \neq 0; \; x^T \cdot A \cdot x > 0$.}}
 	\item \textbf{ Welcher Löser muss verwendet werden, wenn A nicht quadratisch ist?} \\
@@ -167,25 +169,25 @@
 	\end{pmatrix}  = LL^T$  \newline
 	Im Algorithmus wird $L=A$ initialisiert und das obere Dreieck auf $0$ gesetzt. Mit 3 for-Schleifen (aufgrund MatLab Schreibweise) werden dann die Elemente der Spalte wie folgt berechnet: $L(i,j)=L(i,j)-L(i,k)*(L(j,k)/L(k,k))$. Der Wert $x=1/sqrt(L(k,k))$ wird separat berechnet und zum Schluss werden die Elemente der Spalte durch $L(i,k)=L(i,k)*x$ endgültig berechnet.}}
 	\item \textbf{ Was ist fill-in und wie kommt es zustande?}\newline
-	\fbox{\parbox[c]{\textwidth}{Fill-in beschreibt das eine $a_{ij}=0$ in A ist, aber nach der Faktorisierung mit Cholesky $a_{ij} \neq 0$. Fill-in tritt nur innerhlab des Bandes azf alles Nullen außerhalb des Bandes bleiben erhalten.
+	\fbox{\parbox[c]{\textwidth}{Fill-in beschreibt, dass eine $a_{ij}=0$ in A ist, aber nach der Faktorisierung mit Cholesky $l_{ij} \neq 0$. Fill-in tritt nur innerhalb des Bandes auf alle Nullen außerhalb des Bandes bleiben erhalten.
 		Es ensteht durch die gebildete Differenz $K-ww^T$.}}
 	\item \textbf{ Wie funktioniert \qr?} \\
 	\fbox{\parbox[c]{\textwidth}{\begin{itemize}
            \item  Erst orthonormale Basis $\{q_1,\dots,q_n\}$ von range$(A)$ konstruieren (Gram-Schmidt)
-	   \item  Dann sind Vektoren aus $A$ darstellbar in der gefundenen Basis $\{q_1,\dots,q_n\}$.
-           \item  $a_1 = r_{11}q_1, \dots, a_n = r_{1n}q_1 + \dots + r_{nn}q_n$. (Gram-Schmidt liefert auch Koeffizienten $r$)
-	   \item in Matrixschreibweise zusammengefasst ergibt sich: $A = QR$
+	   \item  Dann sind Vektoren aus $A$ darstellbar in der gefundenen Basis $\{q_1,\dots,q_n\}$
+           \item  $a_1 = r_{11}q_1, \dots, a_n = r_{1n}q_1 + \dots + r_{nn}q_n$ (Gram-Schmidt liefert auch Koeffizienten $r$)
+	   \item In Matrixschreibweise zusammengefasst ergibt sich: $A = QR$
 	\end{itemize}
         Für die Lösung eines Least-Squares Problems:
 	\begin{itemize}
-		\item  QR-Faktorisierung $A=QR$ (siehe oben).
+		\item  QR-Faktorisierung $A=QR$ (siehe oben)
 		\item  Berechne $b' = Q^Tb$
-		\item  Löse $Rx = b'$ durch Rückwärtssubstitution.
+		\item  Löse $Rx = b'$ durch Rückwärtssubstitution
 	\end{itemize}}}
 	\item \textbf{ Was ist eine orthogonale Projektion?}\newline
-	\fbox{\parbox[c]{\textwidth}{Entspricht der Projektion eines Punktes $b$ auf das Bild einer Matrix $A$\\
-	beginne mit Projektion von $b$ auf $\langle A\rangle$, mit $\|A\|=1$\\
-	$r=b-b'=(I-AA^T)b$, mit $b'=\left(\sum_{i=1}^{k}A_iA_i^T\right)b=\hat{A}\hat{A}^Tb$ mit $\hat{A}\hat{A}^T$ als orthogonale Projektion}}
+	\fbox{\parbox[c]{\textwidth}{Entspricht der Projektion eines Punktes $b$ auf das Bild einer Matrix $A$.\\
+	Beginne mit Projektion von $b$ auf $\langle A\rangle$, mit $\|A\|=1$,\\
+	$r=b-b'=(I-AA^T)b$, mit $b'=\left(\sum_{i=1}^{k}A_iA_i^T\right)b=\hat{A}\hat{A}^Tb$ und $\hat{A}\hat{A}^T$ als orthogonale Projektion.}}
 	\item \textbf{ Wann ist A von vollem Rang?} \newline 
 	\fbox{\parbox[c]{\textwidth}{Die Matrix hat den vollen Rang, wenn: $rank ( A ) = n$ $\Leftrightarrow$ $dim ( range ( A )) = n$ $\Leftrightarrow$ $dim < a_1 , . . . , a_n> i = n$ $\Leftrightarrow$ Spalten $a_j$ linear unabhängig $\Leftrightarrow$ $null ( A ) = { 0 }$
 	
@@ -236,7 +238,7 @@
 	\end{align*}}}
 	\item \textbf{ Was ist der Unterschied zwischen $-\mathop{\!\mathbin\bigtriangleup} u$ und $\mathop{\!\mathbin\bigtriangleup} u$?} \newline
 	\fbox{\parbox[c]{\textwidth}{$\mathop{\!\mathbin\bigtriangleup} u[i,j,t]=\frac{u[i-1,j,t]+u[i+1,j,t]+u[i,j-1,t]+u[i,j+1.t]-4u[i,j,t]}{h^2}$: Ausgehend von den Punkten um die Mitte wird davon der mittlere Punkt 4mal abgezogen. \\
-	$\mathop{\!\mathbin\bigtriangleup} u[i,j,t]=\frac{4u[i,j,t]-u[i-1,j,t]-u[i+1,j,t]-u[i,j-1,t]-u[i,j+1.t]}{h^2}$: Ausgehen von dem mittleren Punkt, werden die umliegenden Nachbarn abgezogen. \\
+	$-\mathop{\!\mathbin\bigtriangleup} u[i,j,t]=\frac{4u[i,j,t]-u[i-1,j,t]-u[i+1,j,t]-u[i,j-1,t]-u[i,j+1.t]}{h^2}$: Ausgehen von dem mittleren Punkt, werden die umliegenden Nachbarn abgezogen. \\
 	vgl. Abb. Frage 26}}
 	
 \end{enumerate}
@@ -264,22 +266,22 @@
 	\item \textbf{ Was ist die CFL-Bedingung?})\\
 		\fbox{\parbox[c]{\textwidth}{$\delta t \le \frac{h}{||v||}$ mit $||v||$ = Informationsgeschwindigkeit.}}
 	\item \textbf{ Wann ist der Gleichgewichtszustand erreicht?}\newline
-	\fbox{\parbox[c]{\textwidth}{Der implizite Euler konvergiert immer gegen den statischen Gleichgewichtszustand der Heat-Equation, der durch die Laplace-Equation $\delta u=0$ beschrieben wird. Während der explizite nur bei ausreichend kleinen Zeitschritten konvergiert. }}	
+	\fbox{\parbox[c]{\textwidth}{Der implizite Euler konvergiert immer gegen den statischen Gleichgewichtszustand der Heat-Equation, der durch die Laplace-Equation $\mathop{\!\mathbin\bigtriangleup} u=0$ beschrieben wird. Während der explizite nur bei ausreichend kleinen Zeitschritten konvergiert. }}	
 	\item \textbf{ Was beschreiben die Matrizen $U$ und $V$ in der Heat-Equation?} \newline 
-	\fbox{\parbox[c]{\textwidth}{In $U$ werden die Höhen der Funktion an jedem Gridpunkt gespeichert. In V wird die Ableitung der Zeit in Bezug auf eine bestimmte Höhe U, also die Geschwindigkeit, gespeichert. }}
+	\fbox{\parbox[c]{\textwidth}{In $U$ werden die Höhen der Funktion an jedem Gridpunkt gespeichert. In $V$ wird die Ableitung der Zeit in Bezug auf eine bestimmte Höhe $U$, also die Geschwindigkeit, gespeichert. }}
 	\item \textbf{ Was passiert mit den Randpunkten?} \newline
 	\fbox{\parbox[c]{\textwidth}{Die Randpunkte in der Heat-Equation werden nicht verändert.}}
 	\item \textbf{ Wie stellt man das lineare Gleichungssystem für die Laplace-Gleichung auf?} \newline
-	\fbox{\parbox[c]{\textwidth}{Jeder Punkt im Gitter ist eine Unbekannte die berechnet werden muss, wir haben also bei einem N x N mit Gitter N-2 Unbekannten (Randpunkte verändern sich nicht). Dies führt zu einem $(N-2)^2$ x $(N-2)^2$ Gleichungssystem $-Lu=b$.
-		U ist ein Spaltenvektor in dem die neuen Werte U für das Gitter stehen. Die Reihenfolge in der die Gitterpunkte in U stehen führt zu einer Index Abbildung:$u_k=u(i,j)$ mit $k=idx(i,j)=(i-1)+(j-2)\cdot(N-2)$.
-		Für die Matrix L gilt: $l_{kk}=4, l_{kl}=-1/h^2$, wenn (\={i},\={j}) Nachbarn von i,j und $l$=idx(\={i},\={j}) sonst $l_{kl}=0$.
+	\fbox{\parbox[c]{\textwidth}{Jeder Punkt im Gitter ist eine Unbekannte, die berechnet werden muss. Wir haben also bei einem $(N$ x $N)$ Gitter $(N-2)$x$(N-2)$ Unbekannte (Randpunkte verändern sich nicht). Dies führt zu einem $(N-2)^2$ x $(N-2)^2$ Gleichungssystem $-Lu=b$.
+		$u$ ist ein Spaltenvektor in dem die neuen Werte $u$ für das Gitter stehen. Die Reihenfolge, in der die Gitterpunkte in $u$ stehen, führt zu einer Index Abbildung: $u_k=u(i,j)$ mit $k=idx(i,j)=(i-1)+(j-2)\cdot(N-2)$.
+		Für die Matrix L gilt: $l_{kk}=4, l_{kl}=-1/h^2$, wenn (\={i}, \={j}) Nachbarn von i, j und $l$=idx(\={i},\={j}) sonst $l_{kl}=0$.
 	}}
 	\item \textbf{ Warum stellt man das lineare Gleichungssystem für den Laplace auf?}\newline
 	\fbox{\parbox[c]{\textwidth}{Wir betrachten nur das Gleichgewicht, welches nicht mit expliziter Integration lösbar ist, da es unabhängig von der Zeit ist.}}
 	\item \textbf{ Wie unterscheidet sich das Lösen des Gleichungssystems beim Laplace zu den konjugierten?} \newline
 	\fbox{\parbox[c]{\textwidth}{Die konjugierten Verfahren lösen dieses iterativ, während bei der Laplace Gleichung genau eine Lösung gefunden wird. Da er unabhängig vom der Zeit ist, kann die explizite Euler Integration nicht angewendet werden. }}
 	\item \textbf{ Wie löst man dieses Gl?}\newline
-	\fbox{\parbox[c]{\textwidth}{Dieses Gl ist mit der \chf lösbar. Die Zeitkomplexität ist allerdings mit $O(m^3)$ hoch in diesem Fall wodurch die lösungweise durch iterative lösungverfahren besser ist.}}
+	\fbox{\parbox[c]{\textwidth}{Dieses Gl ist mit der \chf lösbar. Die Zeitkomplexität ist allerdings in diesem Fall mit $O(m^3)$ hoch, wodurch die Lösungweise durch iterative Lösungverfahren besser ist.}}
 	\item \textbf{ Welche Eigenschaft hat die Laplace-Matrix?}\\
 	\fbox{\parbox[c]{\textwidth}{	$-L$ hat folgende Eigenschaften:
 		\begin{itemize}
@@ -302,15 +304,15 @@
 	\item \textbf{ Wann werden konjugierte Gradienten angewendet?} \newline
 	\fbox{\parbox[c]{\textwidth}{Für große Matrizen (m>10000), da sie die Struktur ausnutzen.}}
 	\item \textbf{ Was ist $\alpha$?} \newline
-	\fbox{\parbox[c]{\textwidth}{$\alpha$ ist die Schrittweite in der wir uns Richtung Lösung bewegen bei einem iterativem Löser. Im Gradientenabstieg ist $\alpha=\frac{r^{T}_{n} r_n}{r^{T}_{n} A r_n}$; in konjugierten Gradienten 
-		ist $\alpha=\frac{r^{T}_{n} r_n}{p^{T}_{n} A p_n}$ }}
+	\fbox{\parbox[c]{\textwidth}{$\alpha$ ist die Schrittweite in der wir uns bei einem iterativem Löser Richtung Lösung bewegen. Im Gradientenabstieg ist $\alpha=\frac{r^{T}_{n} r_n}{r^{T}_{n} A r_n}$; in konjugierten Gradienten 
+		ist $\alpha=\frac{r^{T}_{n} r_n}{p^{T}_{n} A p_n}$. }}
 	\item \textbf{ Was ist die Konvergenz des Gradientenabstiegs?}\\
 	\fbox{\parbox[c]{\textwidth}{
 	\includegraphics[scale=0.3]{konvergenzgradient}}}
 	\item \textbf{ Wie ist der Gradientenabstieg definiert?}\newline
-	\fbox{\parbox[c]{\textwidth}{Löse $Ax=b, \text{ mit } A \;s.p.d.$ formuliert als Minimierung $f(x)=\frac{1}{2}x^TAx-b^Tx \rightarrow \text{min}$\\
-	$f(x)$ hat ein Minimum, wenn gilt: $0=\nabla f(x)=Ax-b$\\
-	minimiere $f(x)$ iterativ, indem bei jedem Schritt von $x_n$ ein Stückchen im Paraboloid heruntergelaufen wird, dies entspricht dem negativen Gradienten $-\nabla f(x)$.\\
+	\fbox{\parbox[c]{\textwidth}{Löse $Ax=b, \text{ mit } A \;s.p.d.$ formuliert als Minimierung $f(x)=\frac{1}{2}x^TAx-b^Tx \rightarrow \text{min}$.\\
+	$f(x)$ hat ein Minimum, wenn gilt: $0=\nabla f(x)=Ax-b$.\\
+	Minimiere $f(x)$ iterativ, indem bei jedem Schritt von $x_n$ ein Stückchen im Paraboloid heruntergelaufen wird. Dies entspricht dem negativen Gradienten $-\nabla f(x)$.\\
 	Da $r_n=b-Ax_n=-\nabla f(x)$ folgt $r_n$ als Abstiegsrichtung der n-ten Iteration und $x_{n+1}=x_n+\alpha_nr_n$, mit $\alpha_n=\text{arg min}_\alpha f(x_{n+1})$.}}
 
 	\item \textbf{ Was ist der Unterschied zwischen dem Gradientenabstieg und konjugierten Gradienten?} \newline
@@ -322,12 +324,12 @@
 	\fbox{\parbox[c]{\textwidth}{\begin{itemize}
 		\item  Fehler $ \|e_n\|_A$ nimmt monoton ab.
 		\item  Der Algorithmus terminiert nach maximal $m$ Iterationen. 
-		\item  Aufwand $O(m^2)$, typischerweise $O(m^{1.5}$.
+		\item  Aufwand $O(m^2)$, typischerweise $O(m^{1.5})$.
 		\item  Speicheraufwand $O(m)$.
 		\item  Algorithmus muss nicht direkt auf Matrix-Einträge zugreifen. Daher Nutzung einer effizienten Datenstruktur für das Matrix-Vektorprodukt $Ap$ möglich.
 	\end{itemize}}}
 	\item \textbf{ Was ist ein Stopkriterium von konjugierten Gradienten?}\newline
-	\fbox{\parbox[c]{\textwidth}{Wenn $A^{n\times n}$ dann kann man nach maximal $n$-Schritte aufhören, ebenso wenn $\beta<\epsilon$.}}
+	\fbox{\parbox[c]{\textwidth}{Wenn $A^{n\times n}$ kann man nach maximal $n$-Schritte aufhören, ebenso wenn $\beta<\epsilon$.}}
 \end{enumerate}
 
 \section{Wave-Equation}
@@ -335,9 +337,9 @@
 	\item \textbf{ Wie ist die Wave-Equation definiert? Wie kann man sie als PDE erster Ordnung schreiben?} \newline
 	\fbox{\parbox[c]{\textwidth}{$\ddot{u}=c^2 \mathop{\!\mathbin\bigtriangleup}u$. Durch eine Hilfsfunktion $v:=\dot{u}$ kann die Gleichung wie folgt modelliert werden: $\dot{u}=v$ $\dot{v}=c^2\mathop{\!\mathbin\bigtriangleup}u$.}}
 	\item \textbf{ Was erfordert eine doppelt so große Wellengeschwindigkeit?} \newline
-	\fbox{\parbox[c]{\textwidth}{Eine doppelt so hohe Wellenggeschwindigkeit erfordert einen halb so großem Zeitschritt, damit die explizite Integration nicht instabil wird und weiterhin die CFL bedingung erfüllt. }}
+	\fbox{\parbox[c]{\textwidth}{Eine doppelt so hohe Wellenggeschwindigkeit erfordert einen halb so großem Zeitschritt, damit die explizite Integration nicht instabil wird und weiterhin die CFL Bedingung erfüllt. }}
 	\item \textbf{ Wie diskretisiert man die PDE's mit finiten Differenzen im Falle der Wave-Equation?} \newline
-	\fbox{\parbox[c]{\textwidth}{$u[i,j,t]=u(ih,jh,t\delta t)$, $v[i,j,t]=v(ih,jh,t\delta t)$. Die PDEs hängen num im 2-dim Gitter von Raum und Zeit ab.}}
+	\fbox{\parbox[c]{\textwidth}{$u[i,j,t]=u(ih,jh,t\delta t)$, $v[i,j,t]=v(ih,jh,t\delta t)$. Die PDEs hängen nun im 2-dim Gitter von Raum und Zeit ab.}}
 	\item \textbf{ Wieso müssen Zeitschritte manchmal gesplittet werden?}\newline
 	\fbox{\parbox[c]{\textwidth}{Um im expliziten Euler eine große Wellengeschwindigkeit zu berechnen, müssen Zeitschritte gesplittet werden.}}
 	\item \textbf{ Welche Randbedingungen sind möglich?}\newline 
@@ -347,13 +349,13 @@
 		\item Null
 	\end{enumerate}}}
 	\item \textbf{ Was ist der Unterschied zwischen implizit und explizit?} (vlg Heat.) \newline
-	\fbox{\parbox[c]{\textwidth}{Explizite Integration berechnet die Werte des nächsten Zeitpunktes $u[t+1]$ aus dem momentaren Werten am Punkt sowie dessen Nachbarn: $u[t+1]=u[t]+\delta t \mathop{}\!\mathbin\bigtriangleup u[t]$.
+	\fbox{\parbox[c]{\textwidth}{Explizite Integration berechnet die Werte des nächsten Zeitpunktes $u[t+1]$ aus dem momentanen Werten am Punkt, sowie dessen Nachbarn: $u[t+1]=u[t]+\delta t \mathop{}\!\mathbin\bigtriangleup u[t]$.
 		Implizite Integration berechnet die Werte des nächsten Zeitpunktes $u[t+1]$ mithilfe des nächsten Zeitpunktes: $u[t+1]=u[t]+\delta t \mathop{}\!\mathbin\bigtriangleup u[t+1]$.
-		Zum berechnen von $u[t+1]$ müssen wir das Gleichungssystem:$(I-\delta t \mathop{}\!\mathbin\bigtriangleup )u[t+1]=u[t]$ lösen.}}
+		Zum berechnen von $u[t+1]$ müssen wir das Gleichungssystem: $(I-\delta t \mathop{}\!\mathbin\bigtriangleup )u[t+1]=u[t]$ lösen.}}
 	\item \textbf{ Wie sieht das lineare Gleichungssystem im impliziten Fall im Vergleich zum expliziten (Wave Equation) aus?} \\
 		\fbox{\parbox[c]{\textwidth}{Im expliziten Fall kann das Gleichungssystem in einem Schritt gelöst werden, da die Gleichungen nicht voneinander abhängen. Im impliziten Fall hängt $v_{t+1}$ aber von $u_{t+1}$ ab und umgekehrt, und muss daher als Gleichungssystem gelöst werden: \\
 	\begin{itemize}
-		\item $\left( I - \delta t^2 c^2 L \right)v_{t+1} = v_t \delta t c^2Lu_t$.
+		\item $\left( I - \delta t^2 c^2 L \right)v_{t+1} = v_t \delta t c^2Lu_t$
 		\item  Dabei ist $A = \left( I - \delta t^2 c^2 L \right)$, $ x = v_{t+1}$ (gesucht) und
 		$b = v_t \delta t c^2Lu_t$
 	\end{itemize}}}
@@ -362,7 +364,7 @@
 \section{Sparse \chf}
 \begin{enumerate}[resume=b]
 	\item \textbf{ Was ist der Unterschied von Sparse \chf und normaler \chf?}\newline
-	\fbox{\parbox[c]{\textwidth}{Für die Sparse Matrix $A$ wird die Spalte $j$ nicht mehr durch all Spalten $k<j$ aus $L$ modifiziert. Die $j$-Spalte wird nur noch durch die Spalten $k$ modifiziert, für die $l_{jk}\neq0$ ist.}}
+	\fbox{\parbox[c]{\textwidth}{Für die Sparse Matrix $A$ wird die Spalte $j$ nicht mehr durch alle Spalten $k<j$ aus $L$ modifiziert. Die $j$-Spalte wird nur noch durch die Spalten $k$ modifiziert, für die $l_{jk}\neq0$ ist.}}
 	\item \textbf{ Was sind fill-ins?} \newline
 	\fbox{\parbox[c]{\textwidth}{s. Frage 19}}
 	\item \textbf{ Was ist eine Bandmatrix?} \newline
@@ -370,14 +372,14 @@
 	\includegraphics[scale=0.3]{bandmatrix.png}}}
 	\item \textbf{ Kommt in der Sparse \chf fill-in vor?}\newline\fbox{\parbox[c]{\textwidth}{Nein.}}
 	\item \textbf{ Welche Schritte muss man im Sparse \chf machen?}\newline
-	\fbox{\parbox[c]{\textwidth}{Ändere die Reihenfolge der $x_i$ mittels Permutationsmatrix $P$ , so dass $\tilde{x}=Px$\\
-	Sortiere analog $A$ um; also $\hat{A}=AP^T$. Da $A$ nun nicht mehr symmetrisch, permutiere nun auch die Zeilen von $A$ und $b$ respektive $\tilde{A}=P\hat{A}=PAP^T$, $\tilde{b}=Pb$.\\ 
+	\fbox{\parbox[c]{\textwidth}{Ändere die Reihenfolge der $x_i$ mittels Permutationsmatrix $P$ , so dass $\tilde{x}=Px$.\\
+	Sortiere analog $A$ um; also $\hat{A}=AP^T$. Da $A$ nun nicht mehr symmetrisch ist, permutiere nun auch die Zeilen von $A$ und $b$ respektive $\tilde{A}=P\hat{A}=PAP^T$, $\tilde{b}=Pb$.\\ 
 	Wende nun Cholesky auf $\tilde{A}\tilde{x}=\tilde{b}$ an.}}
 	\item \textbf{ Welche Vorteile hat der Sparse \chf?} \newline
 	\fbox{\parbox[c]{\textwidth}{Effizientes, robustes Verfahren für dünn-besetzte Matruzen. Durch eine Umsortierung der Matrix kann es keine fill-ins geben. Durch die Konstruktion von $\tilde{L}$ enthält sie weniger 0en.}}
 	\item \textbf{ Was ist die Band-\chf?} \newline
-	\fbox{\parbox[c]{\textwidth}{Zunächst lege eine Band-matrix-Datenstruktur für L an. der Speicherverbrauch ist nun $O(mb)$ anstatt $O(m^2)$, wobei b die bandbreite von der Bandmatrix ist. Bei der Berechnung der $l_{ij}$ von L müssen nur Einträge $l_{ij} \in Band(L)$ berücksichtigt werden, da alle anderen einträge null sind. Dies reduziert den Rechenaufwand von $O(m^3)$ auf $O(mb^2)$
-		Löse nun $Ly=b$ und $L^Tx=y$ unter Ausnutzung der Bandbegrenzung von L, dies reduziert den aufwand von $O(m^2$ auf $O(mb)$.}}
+	\fbox{\parbox[c]{\textwidth}{Zunächst lege eine Band-Matrix-Datenstruktur für L an. Der Speicherverbrauch ist nun $O(mb)$ anstatt $O(m^2)$, wobei b die Bandbreite von der Bandmatrix ist. Bei der Berechnung der $l_{ij}$ von $L$ müssen nur Einträge $l_{ij} \in Band(L)$ berücksichtigt werden, da alle anderen Einträge null sind. Dies reduziert den Rechenaufwand von $O(m^3)$ auf $O(mb^2)$.
+		Löse nun $Ly=b$ und $L^Tx=y$ unter Ausnutzung der Bandbegrenzung von L. Dies reduziert den Aufwand von $O(m^2)$ auf $O(mb)$.}}
 	
 	\item \textbf{ Wieso macht man den Band-\chf und was ist der Vorteil davon?}\newline
 	\fbox{\parbox[c]{\textwidth}{Geringerer Speicherplatzverbrauch und schneller (vgl. Frage davor).}}
@@ -391,7 +393,7 @@
 \begin{enumerate}[resume=b]
 	
 	\item \textbf{  Wie parallelisiert man?}\newline  
-	\fbox{\parbox[c]{\textwidth}{Auf einem Prozess mittels SIMD und SSE. Auf mehreren Prozessoren mittel OpenMP (1 Masterthread). Der Code von OpenMP ist: \\
+	\fbox{\parbox[c]{\textwidth}{Auf einem Prozess mittels SIMD und SSE. Auf mehreren Prozessoren mittels OpenMP (1 Masterthread). Der Code von OpenMP ist: \\
 	\# pragma omp parallel
 	\\
 	id = omp\_get\_thread\_num ();  Welcher Thread ?\\
@@ -399,7 +401,7 @@
 	}}
 	\item \textbf{ Welche Kommandozeilen Argumente?} \newline
 	\fbox{\parbox[c]{\textwidth}{\begin{itemize}
-			\item  -O: schaltet einfache optimierungen ein
+			\item  -O: schaltet einfache Optimierungen ein
 			\item  -O3: mehr Optimierungen, insbesondere function inlining
 			\item  -Ofast: noch mehr Optimierungen kann aber Ergebnisse verändern!
 			\item  --march=native: Aktiviert die passenden AVX/SSE/SSE3 Instruktionen
@@ -409,7 +411,7 @@
 		\end{itemize}
 	}}
 	\item \textbf{ Worauf muss man bei Parallelisierung achten?}\newline
-	\fbox{\parbox[c]{\textwidth}{Zu beachten ist, dass manche Variablen private gesetzt werden müssen und dass der Speicherzugriff eindeutig sein muss, also Ergebnisse seperat gespeichert werden müssen. }}
+	\fbox{\parbox[c]{\textwidth}{Zu beachten ist, dass manche Variablen private gesetzt werden müssenalso der Speicherzugriff eindeutig sein muss.  }}
 	\item \textbf{ Wie kann man Code optimieren?}\newline
 	\fbox{\parbox[c]{\textwidth}{Bsp.: Call by Reference, Return by Reference, Inlinen von Funktionen.}}
 \end{enumerate}
