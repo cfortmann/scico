@@ -83,7 +83,7 @@
 	      Zum Lösen dann (1) $Ly = b$ und (2) $Ux = y$ lösen.\\
 	      Vorwärtssubstitution für (1):\\
               Erstes Element: $y_1 = \frac{b_1}{l_{11}}$ \\
-	      $ y_i = \frac{1}{l_{ii}} (b_i - \sum_{j=1}^{i-1} l_{ii}y_{j} )$ für $i = 2, \dots, m$.\\
+	      $ y_i = \frac{1}{l_{ii}} (b_i - \sum_{j=1}^{i-1} l_{ij}y_{j} )$ für $i = 2, \dots, m$.\\
 	      Rückwärts für (2): \\
 	      $ x_1 = \frac{y_m}{u_{mm}}$ \\
 	      $x_i = \frac{1}{u_{ii}} (y_i - \sum_{j=i+1}^{m} u_{ij}x_j)$ für $i = m-1, \dots, 1$. }}
