@@ -60,7 +60,7 @@
 	\item \textbf{ Wie werden $A$ und $b$ aufgestellt?} \newline
 	\fbox{\parbox[c]{\textwidth}{b beinhaltet die Werte $y_i$ der gegebenen Punkte. In $A$ werden die Basisfunktionen gespeichert, also zB. Monome (wie Übung) werden in der ersten Zeile die $x_1^{0...n}$ und in den Spalten $x_{1..n}$ gespeichert. Somit steht in der i-ten Zeile und j-ten Spalte der Eintrag $x_{i+1}^j$.}}
 	\item \textbf{ Was ist eine Basisfunktion?} \newline
-	\fbox{\parbox[c]{\textwidth}{Eine Basisfunktion beschreibt eine Kurve indem die Kurve als eine endliche Anzahl von Parametern beschreibt. Die von uns verwendete Basisfunktion ist die Monom-Basis $x^i$.}}
+	\fbox{\parbox[c]{\textwidth}{Eine Basisfunktion beschreibt eine Kurve mit einer endliche Anzahl von Parametern. Die von uns verwendete Basisfunktion ist die Monom-Basis $x^i$.}}
 	\item \textbf{ Wie funktioniert \luf und wie löst man das Gleichungssystem?} \newline
 	   \fbox{\parbox[c]{\textwidth}{   Faktorisierung von A in untere (L) und obere Dreiecksmatrix (U) mittels Gau{\ss}.\\
 	      $	
@@ -165,7 +165,7 @@
 	\begin{pmatrix}	                                                                                                                                                                              \sqrt{a_{11}} & \frac{w^T}{\sqrt{a_{11}}} \\
 	0 & \tilde{L^T}
 	\end{pmatrix}  = LL^T$  \newline
-	Im Algorithmus wird $L=A$ initialisiert und das obere Dreieck auf $0$ gesetzt. Mit 3 for-Schleifen (aufgrund MatLab Schreibweise) werden dann die Elemente der Spalte wie folgt berechnet: $L(i,j)=L(i,j)-L(i,k)*(L(j,k)/L(k,k))$. Der Wert $x=1/sqrt(L(k,k))$ wird seperat berechnet und zum Schluss werden die Elemente der Spalte durch $L(i,k)=L(i,k)*x$ endgültig berechnet.}}
+	Im Algorithmus wird $L=A$ initialisiert und das obere Dreieck auf $0$ gesetzt. Mit 3 for-Schleifen (aufgrund MatLab Schreibweise) werden dann die Elemente der Spalte wie folgt berechnet: $L(i,j)=L(i,j)-L(i,k)*(L(j,k)/L(k,k))$. Der Wert $x=1/sqrt(L(k,k))$ wird separat berechnet und zum Schluss werden die Elemente der Spalte durch $L(i,k)=L(i,k)*x$ endgültig berechnet.}}
 	\item \textbf{ Was ist fill-in und wie kommt es zustande?}\newline
 	\fbox{\parbox[c]{\textwidth}{Fill-in beschreibt das eine $a_{ij}=0$ in A ist, aber nach der Faktorisierung mit Cholesky $a_{ij} \neq 0$. Fill-in tritt nur innerhlab des Bandes azf alles Nullen außerhalb des Bandes bleiben erhalten.
 		Es ensteht durch die gebildete Differenz $K-ww^T$.}}
@@ -269,8 +269,8 @@
 	\fbox{\parbox[c]{\textwidth}{In $U$ werden die Höhen der Funktion an jedem Gridpunkt gespeichert. In V wird die Ableitung der Zeit in Bezug auf eine bestimmte Höhe U, also die Geschwindigkeit, gespeichert. }}
 	\item \textbf{ Was passiert mit den Randpunkten?} \newline
 	\fbox{\parbox[c]{\textwidth}{Die Randpunkte in der Heat-Equation werden nicht verändert.}}
-	\item \textbf{ Wie stellt man das lineare Gleichungssystem für den Laplace auf?} \newline
-	\fbox{\parbox[c]{\textwidth}{Jeder Punkt im Gitter ist eine Unbekannte die berechnet werden muss, wir haben als bei einem N x N mit Gitter N-2 Unbekannten (Randpunkte verändern sich nicht). Dies führt zu einem $(N-2)^2$ x $(N-2)^2$ Gleichungssystem $-Lu=b$.
+	\item \textbf{ Wie stellt man das lineare Gleichungssystem für die Laplace-Gleichung auf?} \newline
+	\fbox{\parbox[c]{\textwidth}{Jeder Punkt im Gitter ist eine Unbekannte die berechnet werden muss, wir haben also bei einem N x N mit Gitter N-2 Unbekannten (Randpunkte verändern sich nicht). Dies führt zu einem $(N-2)^2$ x $(N-2)^2$ Gleichungssystem $-Lu=b$.
 		U ist ein Spaltenvektor in dem die neuen Werte U für das Gitter stehen. Die Reihenfolge in der die Gitterpunkte in U stehen führt zu einer Index Abbildung:$u_k=u(i,j)$ mit $k=idx(i,j)=(i-1)+(j-2)\cdot(N-2)$.
 		Für die Matrix L gilt: $l_{kk}=4, l_{kl}=-1/h^2$, wenn (\={i},\={j}) Nachbarn von i,j und $l$=idx(\={i},\={j}) sonst $l_{kl}=0$.
 	}}
