@@ -80,6 +80,10 @@
 	      \rightarrow
               \dots
               $\\
+              Aus dem Gauß ergibt sich: $(L_1 L_2 ...)A:=U$.\\
+              L ist dann : $(L^{-1}_1 L^{-1}_2 ...)=(L_1 L_2...)^{-1}$\\
+              Inverse zu bilden ist hier einfach da einfach nur alle Einträge die nicht auf der Haupt-diogonalen liegen negiert werden müssen.\\
+              Gleichungssystem ist dann: $LUx=b$\\
 	      Zum Lösen dann (1) $Ly = b$ und (2) $Ux = y$ lösen.\\
 	      Vorwärtssubstitution für (1):\\
               Erstes Element: $y_1 = \frac{b_1}{l_{11}}$ \\
@@ -91,7 +95,7 @@
 	\item \textbf{ Wie kann man \luf stabiler machen?}\newline
 	\fbox{\parbox[c]{\textwidth}{Pivotisierung der Matrix, mittels Permutationsmatrix. Vertausche den maximalen Eintrag $a_{ik}^k$ der Spalte mit dem Element auf der Diagonalen $a_{kk}^k$. }}
 	\item \textbf{ Was ist der Aufwand?} \newline
-	\fbox{\parbox[c]{\textwidth}{$PA=LU$: $\frac{2}{3}m^3$ FLOPs.}}
+	\fbox{\parbox[c]{\textwidth}{$PA=LU$: $\frac{2}{3}m^3$ FLOPs(Floating Point Operations).}}
 	\item \textbf{ Wann geht der \luf kaputt?} \newline
 	\fbox{\parbox[c]{\textwidth}{Die \luf scheitert sobald der Algorithmus versucht eine Division durch 0 durchzuführen. Bsp. Matrix: $\begin{pmatrix}
 	0&1\\
@@ -169,7 +173,10 @@
 	\begin{pmatrix}	                                                                                                                                                                              \sqrt{a_{11}} & \frac{w^T}{\sqrt{a_{11}}} \\
 	0 & \tilde{L^T}
 	\end{pmatrix}  = LL^T$  \newline
-	Im Algorithmus wird $L=A$ initialisiert und das obere Dreieck auf $0$ gesetzt. Mit 3 for-Schleifen (aufgrund MatLab Schreibweise) werden dann die Elemente der Spalte wie folgt berechnet: $L(i,j)=L(i,j)-L(i,k)*(L(j,k)/L(k,k))$. Der Wert $x=1/sqrt(L(k,k))$ wird separat berechnet und zum Schluss werden die Elemente der Spalte durch $L(i,k)=L(i,k)*x$ endgültig berechnet.}}
+	Im Algorithmus wird $L=A$ initialisiert und das obere Dreieck auf $0$ gesetzt.
+	Mit 3 for-Schleifen (aufgrund MatLab Schreibweise) werden dann die Elemente der Spalte wie folgt berechnet: $L(i,j)=L(i,j)-L(i,k)*(L(j,k)/L(k,k))$. 
+	Die Schleifen laufen über k und j und für die Spalte i.
+	Der Wert $x=1/sqrt(L(k,k))$ wird separat berechnet und zum Schluss werden die Elemente der Spalte durch $L(i,k)=L(i,k)*x$ endgültig berechnet.}}
 	\item \textbf{ Was ist fill-in und wie kommt es zustande?}\newline
 	\fbox{\parbox[c]{\textwidth}{Fill-in beschreibt, dass eine $a_{ij}=0$ in A ist, aber nach der Faktorisierung mit Cholesky $l_{ij} \neq 0$. Fill-in tritt nur innerhalb des Bandes auf alle Nullen außerhalb des Bandes bleiben erhalten.
 		Es ensteht durch die gebildete Differenz $K-ww^T$.}}
@@ -179,6 +186,7 @@
 	   \item  Dann sind Vektoren aus $A$ darstellbar in der gefundenen Basis $\{q_1,\dots,q_n\}$
            \item  $a_1 = r_{11}q_1, \dots, a_n = r_{1n}q_1 + \dots + r_{nn}q_n$ (Gram-Schmidt liefert auch Koeffizienten $r$)
 	   \item In Matrixschreibweise zusammengefasst ergibt sich: $A = QR$
+	   \item Daraus ergibt sich das GL: $QRx=QQ^T b \Rightarrow Rx=Q^T b$
 	\end{itemize}
         Für die Lösung eines Least-Squares Problems:
 	\begin{itemize}
@@ -254,24 +262,26 @@
 	\item \textbf{ Wie sieht die Heat-Equation aus?}\newline
 	\fbox{\parbox[c]{\textwidth}{$ \dot{u}=\mathop{}\!\mathbin\bigtriangleup u$}}
 	\item \textbf{ Was besagt $\dot{u} = \mathop{}\!\mathbin\bigtriangleup u$?}\newline
-	\fbox{\parbox[c]{\textwidth}{	Siehe vorige Frage.}}
+	\fbox{\parbox[c]{\textwidth}{	Siehe vorige Frage. Bedeutung: Fluss der WÄrme in Richtung Nachbarn wird berechnet.}}
 	\item \textbf{ Was ist der explizite/implizit Euler?} (Definition und Vorteile/Nachteile sowie Unterschiede)\newline
-	\fbox{\parbox[c]{\textwidth}{Definition vgl. 59\\
+	\fbox{\parbox[c]{\textwidth}{
 	\begin{tabular}{c|c}
 		explizit & implizit\\\hline
-		\textbf{Vorteile:}&\\
+		Explizit: Berechne $v[i,j]=\mathop{}\!\mathbin\bigtriangleup u=\dot{u}$ &Implizit:$u[i,jt+1]=u[i,j]+\delta t \cdot \mathop{}\!\mathbin\bigtriangleup u[i,j,t+1]$ \\
+		und dann $u[i,jt+1]=u[i,j]+\delta t \cdot v[i,j]$ &  erfordert also das lösen des GLs:$(I-\delta t \mathop{}\!\mathbin\bigtriangleup)u[t+1]=u[t]$\\
+		\textbf{Vorteile:}&\textbf{Vorteile:}\\
 		einfach zu verstehen& verwendet Zeitableitung $\dot{u}$ am nächsten Zeitpunkt $u[t+1]$\\
-		einfach zu implementieren &\\
-		\textbf{Nachteile:}& \\
-		Instabilität bei großen Zeitsprüngen, nicht mehr $\delta t$ konvergiert & stabil für jeden Zeitschritt \\
-		Fehler schaukeln stark $\rightarrow$ keine Lösung mehr möglich & höherer Rechenaufwand
+		einfach zu implementieren & stabil für jeden Zeitschritt \\
+		\textbf{Nachteile:}&\textbf{Nachteile:} \\
+		Instabilität bei großen Zeitsprüngen, nicht mehr $\delta t$ konvergiert & höherer Rechenaufwand\\
+		Fehler schaukeln stark $\rightarrow$ keine Lösung mehr möglich 
 	\end{tabular} }}
 	
 	
 	\item \textbf{ Was passiert bei zu hohen Schritten im explizit Euler?}\newline
 	\fbox{\parbox[c]{\textwidth}{Es konvergiert nicht mehr, da die Nachbarn einen zu hohen Einfluss auf die Lösung haben. Um das zu berechnen müsste man mehr Nachbarn in Betracht ziehen, da bei zu hohen Zeitschritten auch weit entfernte Nachbarn einen Einfluss auf den betrachteten Punkt haben.}}
 	\item \textbf{ Was ist die CFL-Bedingung?})\\
-		\fbox{\parbox[c]{\textwidth}{$\delta t \le \frac{h}{||v||}$ mit $||v||$ = Informationsgeschwindigkeit.}}
+		\fbox{\parbox[c]{\textwidth}{$\delta t \le \frac{h}{||v||}$ mit $||v||$ = Informationsgeschwindigkeit. Bei der Heat-Equation: $\delta t \le \frac{1}{4}$}}
 	\item \textbf{ Wann ist der Gleichgewichtszustand erreicht?}\newline
 	\fbox{\parbox[c]{\textwidth}{Der implizite Euler konvergiert immer gegen den statischen Gleichgewichtszustand der Heat-Equation, der durch die Laplace-Equation $\mathop{\!\mathbin\bigtriangleup} u=0$ beschrieben wird. Während der explizite nur bei ausreichend kleinen Zeitschritten konvergiert. }}	
 	\item \textbf{ Was beschreiben die Matrizen $U$ und $V$ in der Heat-Equation?} \newline 
@@ -298,7 +308,7 @@
 		\end{itemize}
 		}}
 \end{enumerate}
-\section{Konjugierte Gradienten}
+\section{Konjugierte Gradienten \& Gradientenabstieg}
 \begin{enumerate}[resume=b]
 	\item \textbf{ Wie funktionieren konjugierte Gradienten?}\newline
 	\fbox{\parbox[c]{\textwidth}{\begin{align*}
@@ -306,7 +316,7 @@
 	&\Rightarrow x_{n+1}=x_n+\alpha_np_n,\\
 	\text{wobei }\alpha_n \text{ ähnlich zum Gradientenabstieg bestimmt werden kann:}\\
 	&\frac{\delta}{\delta \alpha_n}f(x_n+\alpha_np_n) = 0\\
-	&\Rightarrow \alpha_n=\frac{p_n^Tr_n}{p_n^TAp_n,} \text{ wenn }p_n=-\nabla f(x_n)=r_n \text{ äquiv. zu Gradientenabstieg}
+	&\Rightarrow \alpha_n=\frac{p_n^Tr_n}{p_n^TAp_n,} \\ \text{ wenn }p_n=-\nabla f(x_n)=r_n \text{ äquiv. zu Gradientenabstieg}
 	\end{align*}}}
 	\item \textbf{ Wann werden konjugierte Gradienten angewendet?} \newline
 	\fbox{\parbox[c]{\textwidth}{Für große Matrizen (m>10000), da sie die Struktur ausnutzen.}}
@@ -336,7 +346,7 @@
 		\item  Algorithmus muss nicht direkt auf Matrix-Einträge zugreifen. Daher Nutzung einer effizienten Datenstruktur für das Matrix-Vektorprodukt $Ap$ möglich.
 	\end{itemize}}}
 	\item \textbf{ Was ist ein Stopkriterium von konjugierten Gradienten?}\newline
-	\fbox{\parbox[c]{\textwidth}{Wenn $A^{n\times n}$ kann man nach maximal $n$-Schritte aufhören, ebenso wenn $\beta<\epsilon$.}}
+	\fbox{\parbox[c]{\textwidth}{Wenn $A^{n\times n}$ kann man nach maximal $n$-Schritte aufhören, ebenso wenn $\beta<\epsilon$n mit $\beta$= der gemachte Fehler und $\epsilon$ der maximale Fehler.}}
 \end{enumerate}
 
 \section{Wave-Equation}
@@ -373,7 +383,8 @@
 	\item \textbf{ Was ist der Unterschied von Sparse \chf und normaler \chf?}\newline
 	\fbox{\parbox[c]{\textwidth}{Für die Sparse Matrix $A$ wird die Spalte $j$ nicht mehr durch alle Spalten $k<j$ aus $L$ modifiziert. Die $j$-Spalte wird nur noch durch die Spalten $k$ modifiziert, für die $l_{jk}\neq0$ ist.}}
 	\item \textbf{ Was sind fill-ins?} \newline
-	\fbox{\parbox[c]{\textwidth}{s. Frage 19}}
+	\fbox{\parbox[c]{\textwidth}{Fill-in beschreibt, dass eine $a_{ij}=0$ in A ist, aber nach der Faktorisierung mit Cholesky $l_{ij} \neq 0$. Fill-in tritt nur innerhalb des Bandes auf alle Nullen außerhalb des Bandes bleiben erhalten.
+		Es ensteht durch die gebildete Differenz $K-ww^T$.}}
 	\item \textbf{ Was ist eine Bandmatrix?} \newline
 	\fbox{\parbox[c]{\textwidth}{Eine Bandmatrix ist eine dünnbesetzte Matrix deren Nicht-Null-Einträge sich auf ein \glqq Band\grqq \ um die Diagonale der Matrix beschränken, wobei die Bandbreite $\beta(A)$ definiert ist als die maximale Distanz einer Nicht-Null von der Diagonalen der Matrix A.
 	\includegraphics[scale=0.3]{bandmatrix.png}}}
@@ -383,7 +394,7 @@
 	Sortiere analog $A$ um; also $\hat{A}=AP^T$. Da $A$ nun nicht mehr symmetrisch ist, permutiere nun auch die Zeilen von $A$ und $b$ respektive $\tilde{A}=P\hat{A}=PAP^T$, $\tilde{b}=Pb$.\\ 
 	Wende nun Cholesky auf $\tilde{A}\tilde{x}=\tilde{b}$ an.}}
 	\item \textbf{ Welche Vorteile hat der Sparse \chf?} \newline
-	\fbox{\parbox[c]{\textwidth}{Effizientes, robustes Verfahren für dünn-besetzte Matruzen. Durch eine Umsortierung der Matrix kann es keine fill-ins geben. Durch die Konstruktion von $\tilde{L}$ enthält sie weniger 0en.}}
+	\fbox{\parbox[c]{\textwidth}{Effizientes, robustes Verfahren für dünn-besetzte Matruzen. Durch eine Umsortierung der Matrix kann es keine fill-ins geben. Durch die Konstruktion von $\tilde{L}$ enthält sie weniger nicht 0en.}}
 	\item \textbf{ Was ist die Band-\chf?} \newline
 	\fbox{\parbox[c]{\textwidth}{Zunächst lege eine Band-Matrix-Datenstruktur für L an. Der Speicherverbrauch ist nun $O(mb)$ anstatt $O(m^2)$, wobei b die Bandbreite von der Bandmatrix ist. Bei der Berechnung der $l_{ij}$ von $L$ müssen nur Einträge $l_{ij} \in Band(L)$ berücksichtigt werden, da alle anderen Einträge null sind. Dies reduziert den Rechenaufwand von $O(m^3)$ auf $O(mb^2)$.
 		Löse nun $Ly=b$ und $L^Tx=y$ unter Ausnutzung der Bandbegrenzung von L. Dies reduziert den Aufwand von $O(m^2)$ auf $O(mb)$.}}
