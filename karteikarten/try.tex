@@ -1,0 +1,229 @@
+\documentclass{beamer}
+\usepackage{pgfmath,pgffor}
+\usepackage{tabularx}
+\usepackage{arydshln}
+\usepackage{placeins}
+\usepackage{hyperref}
+\usepackage{subcaption}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{afterpage}
+\usepackage[USenglish]{babel}
+\usepackage{mdframed}
+\usepackage{todonotes}
+\usepackage{threeparttable}
+\usepackage{framed}
+\usepackage{xspace}	
+\usepackage{fix-cm}
+
+\usepackage[makeroom]{cancel}
+
+\newcommand*{\tab}{&}
+\newcommand*{\figca}[1]{\caption{#1}}
+
+\usepackage{enumitem}
+\setlist{leftmargin=3mm}
+\usepackage{refcount}
+
+\usepackage{cases}
+\setlength{\parindent}{3em}
+
+\usepackage{chngcntr}
+\usepackage{multirow, multicol}
+ \usepackage{float}
+
+\counterwithin*{equation}{enumi}
+\newcommand{\qr}{QR-Faktorisierung\xspace}
+\newcommand{\luf}{LU-Faktorisierung\xspace}
+\newcommand{\kui}{Kurven-Interpolation\xspace}
+\newcommand{\kua}{Kurven-Approximation\xspace}
+\newcommand{\chf}{Cholesky-Faktorisierung\xspace}
+\newcommand{\schf}{Sparse \chf}
+\usepackage{mathtools}
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\usepackage{amsmath,amsfonts,amssymb,amsthm}
+\usepackage{mathptmx}
+\usepackage{calc}
+\usepackage{wasysym}
+
+
+\makeatletter
+\def\pgfmathrandomitemwithoutreplacement#1#2{%
+    \pgfmath@ifundefined{pgfmath@randomlist@#2}{\pgfmath@error{Unknown random list `#2'}}{%
+        \edef\pgfmath@randomlistlength{\csname pgfmath@randomlist@#2\endcsname}%
+        \ifnum\pgfmath@randomlistlength>0\relax%
+            \pgfmathrandominteger{\pgfmath@randomtemp}{1}{\pgfmath@randomlistlength}%
+            \def\pgfmath@marshal{\def#1}%
+            \expandafter\expandafter\expandafter\pgfmath@marshal\expandafter\expandafter\expandafter{\csname pgfmath@randomlist@#2@\pgfmath@randomtemp\endcsname}%
+            % Now prune.
+            \c@pgfmath@counta=\pgfmath@randomtemp\relax%
+            \c@pgfmath@countb=\c@pgfmath@counta%
+            \advance\c@pgfmath@countb by1\relax%
+            \pgfmathloop%
+            \ifnum\c@pgfmath@counta=\pgfmath@randomlistlength\relax%
+            \else%
+                \def\pgfmath@marshal{\expandafter\global\expandafter\let\csname pgfmath@randomlist@#2@\the\c@pgfmath@counta\endcsname=}%
+                \expandafter\pgfmath@marshal\csname pgfmath@randomlist@#2@\the\c@pgfmath@countb\endcsname%
+                \advance\c@pgfmath@counta by1\relax%
+                \advance\c@pgfmath@countb by1\relax%
+            \repeatpgfmathloop%
+            \advance\c@pgfmath@counta by-1\relax%
+            \expandafter\xdef\csname pgfmath@randomlist@#2\endcsname{\the\c@pgfmath@counta}%        
+        \else%
+            \pgfmath@error{Random list `#2' is empty}%
+        \fi%        
+    }}
+
+
+\def\pgfmathrandomlistcopy#1#2{%
+    \pgfmath@ifundefined{pgfmath@randomlist@#2}{\pgfmath@error{Unknown random list `#2'}}{%
+        \edef\pgfmath@randomlistlength{\csname pgfmath@randomlist@#2\endcsname}%
+        \pgfmathloop%
+        \ifnum\pgfmathcounter>\pgfmath@randomlistlength\relax%
+        \else%
+            \def\pgfmath@marshal{\expandafter\global\expandafter\let\csname pgfmath@randomlist@#1@\pgfmathcounter\endcsname=}%
+            \expandafter\pgfmath@marshal\csname pgfmath@randomlist@#2@\pgfmathcounter\endcsname%
+        \repeatpgfmathloop%
+        \expandafter\xdef\csname pgfmath@randomlist@#1\endcsname{\pgfmath@randomlistlength}%
+    }%  
+}
+\makeatother
+
+
+\begin{document}
+\pgfmathsetseed{\number\pdfrandomseed} % seed for random generator
+
+\pgfmathdeclarerandomlist{WordsMaster}{%
+ {\textbf{Wie werden $A$ und $b$ aufgestellt?\newline} \textcolor<1>{white}{$b$ beinhaltet die Werte $y_i$ der gegebenen Punkte. In $A$ werden die Basisfunktionen gespeichert, also zB. Monome (wie Übung) werden in der ersten Zeile die $x_1^{0...n}$ und in den Spalten $x_{1..n}$ gespeichert. Somit steht in der $i$-ten Zeile und $j$-ten Spalte der Eintrag $x_{i+1}^j$.} }%
+ {\textbf{Was ist eine Basisfunktion?\newline} \textcolor<1>{white}{Eine Basisfunktion beschreibt eine Kurve mit einer endliche Anzahl von Parametern. Die von uns verwendete Basisfunktion ist die Monom-Basis $x^i$.} }%    
+ {\textbf{Wie funktioniert \luf und wie löst man das Gleichungssystem?\newline} \textcolor<1>{white}{Faktorisierung von $A$ in untere ($L$) und obere Dreiecksmatrix ($U$) mittels Gau{\ss}.\[
+	      \begin{pmatrix}
+		* & * & * & *\\
+		* & * & * & *\\
+		* & * & * & *\\
+		* & * & * & *
+	      \end{pmatrix}
+	      \rightarrow
+	      \begin{pmatrix}
+		* & * & * & *\\
+		0 & * & * & *\\
+		0 & * & * & *\\
+		0 & * & * & *
+	      \end{pmatrix}
+	      \rightarrow
+              \dots\]
+	      Zum Lösen dann (1) $Ly = b$ und (2) $Ux = y$ lösen.\\
+	      Vorwärtssubstitution für (1):\\
+              Erstes Element: $y_1 = \frac{b_1}{l_{11}}$ \\
+	      $\displaystyle y_i = \frac{1}{l_{ii}} (b_i - \sum_{j=1}^{i-1} l_{ij}y_{j} )$ für $i = 2, \dots, m$.\\
+	      Rückwärts für (2): \\
+	      $ x_1 = \frac{y_m}{u_{mm}}$ \\
+	      $\displaystyle x_i = \frac{1}{u_{ii}} (y_i - \sum_{j=i+1}^{m} u_{ij}x_j)$ für $i = m-1, \dots, 1$. } }%
+    {\textbf{ Wie kann man \luf stabiler machen?\newline} \textcolor<1>{white}{Pivotisierung der Matrix, mittels Permutationsmatrix. Vertausche den maximalen Eintrag $a_{ik}^k$ der Spalte mit dem Element auf der Diagonalen $a_{kk}^k$.} }    
+    {\textbf{Wann geht der \luf kaputt?\newline} \textcolor<1>{white}{Die \luf scheitert sobald der Algorithmus versucht eine Division durch 0 durchzuführen. Bsp. Matrix: $\begin{pmatrix}
+    		0&1\\
+    		1&1
+    		\end{pmatrix}$}}
+    {\textbf{Was ist der Unterschied zwischen Approximation und Interpolation?\newline} \textcolor<1>{white}{Polynomgrad bzw. Dimensionen der Matrix $A^{m \times n}$.\\
+    \begin{itemize}
+    	\item  $m = n$: $A$ quadratisch, voller Rang, existiert Inverse, dann eindeutige Lösung. $\Rightarrow$ Interpolation
+    	\item  $m > n$: System überbestimmt, nicht exakt lösbar. $\Rightarrow$ Approximation.  
+    \end{itemize}} }  
+	{\textbf{ Wie kann ein überbestimmtes Gleichungssystem approximiert werden?\newline} \textcolor<1>{white}{
+	Normalengleichung mit anschließender \luf. oder \chf oder SVD oder ...		
+	} } 	       
+	{\textbf{ Warum sollte man manchmal ein Polynom kleineren Grades finden wollen?\newline} \textcolor<1>{white}{
+	Durch ein Polynom kleineren Grades können verrauschte Daten besser approximiert werden.
+	} }
+	{\textbf{ Was ist der Grad eines Polynomes?\newline} \textcolor<1>{white}{
+	Der Grad eines Polynomes entspricht dessen höchster Potenz.
+	} }
+{\textbf{ Was sind Normalengleichungen und wie sind sie definiert? Welche Dimension hat $A^TA$?\newline} \textcolor<1>{white}{
+		Die Normalengleichung enthält die Lösung des überbestimmten (inkonsisten) Gleichungssystem $Ax=b$ und ist definiert als $A^TAx=A^Tb$. Dabei hat $A^TA$ die Dimension $n\times n$.
+	} }
+{\textbf{Wie leitet man die Normalengleichung her?\newline} \textcolor<1>{white}{
+	Es gibt 3 Herleitungsarten, analytisch durch partielle Ableitungen oder Vektor-Ableitungen oder geometrisch. Die geometrische Herleitung geht vom folgenden aus:\\
+	\includegraphics<2>[scale=0.3]{../GeoHer}
+} }
+{\textbf{ Was ist die 2-Norm?\newline} \textcolor<1>{white}{
+	\[\|x\|_2=\sqrt{\sum_{i}x_i^2}\]
+} }
+{\textbf{ Wann ist eine Matrix symmetrisch positiv definit?\newline} \textcolor<1>{white}{
+		Eine Matrix ist symmetrisch, wenn gilt, dass $A^T=A$ und positiv definit, wenn gilt, dass $\forall x\neq0: x^TAx>0$.
+} }
+{\textbf{ Welcher Löser muss verwendet werden, wenn $A$ nicht quadratisch ist?\newline} \textcolor<1>{white}{
+		\chf, SVD oder \qr. Je nach Eigenschaft von $A$.
+} }
+{\textbf{ Was ist der Unterschied zwischen \chf und \qr?\newline} \textcolor<1>{white}{
+	\qr ist besser konditioniert und stabiler ($\kappa(A)$) als die in der \chf verwendete Normalengleichung $A^TAx=A^Tb$ ($\kappa(A^TA)=\kappa(A)^2$).
+} }
+{\textbf{ Was ist die \chf? Wie funktioniert sie?\newline} \textcolor<1>{white}{
+		\chf ist ein robuster und effizienter auf s.p.d. Matrizen basierender Löser, der mittels symmetrischer Gauß-Elimination funktioniert.\hfil
+		\includegraphics<2>[scale=0.4]{../symgauss.png}\\
+		Dabei wird die Matrix $A$ in die Faktoren $L,\;L^T$ zerlegt.Dabei wird die Matrix $A$ in die Faktoren $L$ und $L^T$ zerlegt.  $A=\begin{pmatrix}
+		a_{11} & w^T \\
+		w & K
+		\end{pmatrix}
+		=\begin{pmatrix}
+		\sqrt{a_{11}} & 0 \\
+		\frac{w}{\sqrt{a_{11}}} & I
+		\end{pmatrix} 
+		\begin{pmatrix}
+		1 & 0 \\
+		0 & \tilde{L}\tilde{L^T}
+		\end{pmatrix}
+		\begin{pmatrix}	
+		\sqrt{a_{11}} & \frac{w^T}{\sqrt{a_{11}}} \\
+		0 & I
+		\end{pmatrix}   
+		= LL^T$ 
+} }
+{\textbf{ Was ist fill-in und wie kommt es zustande?\newline} \textcolor<1>{white}{
+	Fill-in bedeutet, dass ein Element $a_{ij}\in A$ 0 ist, jedoch nach der \chf $l_{ij}\neq0$ gilt. Das passiert, durch die gebildete Differenz $K-ww^T$. Fill-in tritt deshalb nur innerhalb des Bandes auf, alle Nullen außerhalb des Bandes bleiben erhalten.
+} }
+{\textbf{ Wie funktioniert die \qr?\newline} \textcolor<1>{white}{
+		Erst orthonormale Basis $\lbrace q_1,..,q_n\rbrace$ von $range(A)$ konstruieren und anschließend die Vektoren aus $A$ mit der neuen Basis darstellen: $a_1=r_11q1,...,a_n=r_{1n}q_1+...+r_{nn}q_n$.\\
+		Das ergibt in Matrix-Schreibweise: $A=QR$, sodass letztendlich folgt $Ax=b\Leftrightarrow QRx=QQ^Tb \Leftrightarrow Rx=Q^Tb$
+} }
+{\textbf{ Wie löst man das Least-Squares Problem mit \qr?\newline} \textcolor<1>{white}{
+		\qr $A=QR$, berechne $b'=Q^Tb$ und löse $Rx=b'$ durch Rückwärtssubstitution
+} }
+{\textbf{ Was ist eine orthogonale Projektion?\newline} \textcolor<1>{white}{
+		Entspricht der senkrechten Projektion eines Punktes $b$ auf das Bild einer Matrix $A$.
+		Beginne mit Projektion von $b$ auf $\langle A\rangle$, mit $\|A\|=1$,
+		$r=b-b'=(I-AA^T)b$, mit $b'=\left(\sum_{i=1}^{k}A_iA_i^T\right)b=\hat{A}\hat{A}^Tb$ und $\hat{A}\hat{A}^T$ als orthogonale Projektion.
+} }
+{\textbf{ Wann hat $A$ vollen Rang?\newline} \textcolor<1>{white}{
+		Wenn die Zeilen- bzw. Spaltenvektoren linear unabhängig sind oder die Determinante von 0 verschieden ist.
+} }
+{\textbf{ Wie ist die Pseudoinverse definiert?\newline} \textcolor<1>{white}{
+		$A^+=(A^TA)^{-1}A^T$, aber auch nur solange die Spalten linear unabhängig sind.
+} }
+{\textbf{ Was ist die Idee der Konditionierung?\newline} \textcolor<1>{white}{
+		Das Problem als Funktion modellieren, welche bei Eingabe $x$ Ausgabe $f(x)$ liefert. Ein Problem ist gut konditioniert, wenn eine kleine Pertubation in $x$ auch nur eine kleine Pertubation in $f(x)$ bewirkt. Umgekehrt sollte klar sein. 
+} }
+}%
+
+\newcommand*{\NumberOfQuizes}{20}%
+\pgfmathrandomlistcopy{Words}{WordsMaster}
+
+\foreach \QuizNumber in {1,...,\NumberOfQuizes} {%
+    \pgfmathrandomitemwithoutreplacement{\RandomQuestion}{Words} 
+
+\begin{frame}<1>
+    \RandomQuestion
+\end{frame}
+
+\begin{frame}<2>
+    \RandomQuestion
+\end{frame}
+
+}%
+
+\end{document}
