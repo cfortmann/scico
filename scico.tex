@@ -410,9 +410,8 @@
 	\item \textbf{ Wieso macht man den Band-\chf und was ist der Vorteil davon?}\newline
 	\fbox{\parbox[c]{\textwidth}{Geringerer Speicherplatzverbrauch und schneller (vgl. Frage davor).}}
 	\item \textbf{Wozu verwendet man den Eliminationsgraphen und wie funktioniert dieser?}\newline
-	\fbox{\parbox[c]{\textwidth}{Der Eliminationsgraph ermittelt genau die Anzahl an Fill-ins die neu auftreten durch die \chf. Aufgestellt wird er so: Erstelle einen Konten für jede Spalte.
-	Wenn in A  $a_{ij} \neq 0$ ist, dann ziehe eine Kante von vom Knoten i nach Knoten j. Dies ist der initial Graph, nun entferne suk­zes­si­v die Knoten(angefangen mit Knoten 1) bis nur noch 1 Knoten übrig ist.
-	Wenn ein Weg zwischen zwei Knoten über den gelöschten Knoten führte, so ziehe eine neue Kante der diesen Weg wiederspiegelt. Alle so neu gezogenen Kanten stellen Fill-ins dar die in der \chf auftreten werden.}}
+	\fbox{\parbox[c]{\textwidth}{Der Eliminationsgraph ermittelt die Anzahl der Fill-ins, die durch die \chf neu auftreten. Aufgestellt wird er so: Erstelle einen Konten für jede Spalte.
+	Wenn ein Element $a_{ij}$ von A nicht Null ist ($a_{ij} \neq 0$), ziehe eine Kante zwischen den Knoten i und j. Dies ergibt den initialen Graphen. Nun entferne sukzessive die Knoten(angefangen mit Knoten 1) bis nur noch ein Knoten übrig ist. Wenn ein Weg zwischen zwei Knoten über den gelöschten Knoten führte, so ziehe eine neue Kante zwischen den beiden Knoten. Alle so neu gezogenen Kanten stellen Fill-ins dar, die in der \chf auftreten werden.}}
 	\item \textbf{ Was macht der Minimum degree-Algorithmus?}\newline
 	\fbox{\parbox[c]{\textwidth}{
 	Ziel: Permutation finden, sodass $LL^T=PAP^T$ möglichst wenig fill-in besitzt.\\

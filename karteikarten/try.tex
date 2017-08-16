@@ -13,6 +13,7 @@
 \usepackage{amssymb}
 \usepackage{graphicx}
 \usepackage{booktabs}
+\usepackage{arydshln}
 \usepackage{afterpage}
 \usepackage[USenglish]{babel}
 \usepackage{mdframed}
@@ -28,11 +29,11 @@
 \newcommand*{\figca}[1]{\caption{#1}}
 
 \usepackage{enumitem}
-\setlist{leftmargin=3mm}
+\setlist{leftmargin=0mm}
 \usepackage{refcount}
 
 \usepackage{cases}
-\setlength{\parindent}{3em}
+\setlength{\parindent}{0em}
 
 \usepackage{chngcntr}
 \usepackage{multirow, multicol}
@@ -270,12 +271,29 @@
 {\textbf{Wie löst man die Laplace-Gleichung?\newline} \textcolor<1>{white}{
 		Die Laplace-Gleichung ist mittels \chf lösbar. Die Zeitkomplexität ist allerdings mit $\mathcal{O(n^3)}$ recht hoch, sodass unter anderem konjugierte Gradienten verwendet werden können. 
 } }
-{\textbf{Welche Eigenschaft hat die Laplace-Matrix $L$?}\newline} \textcolor<1>{white}{
+{\textbf{Welche Eigenschaft hat die Laplace-Matrix $L$?\newline} \textcolor<1>{white}{
 	Die $L$ ist sparse: Maximal sind 5 Einträge pro Zeile ungleich 0, $L$ ist symmetrisch und positiv/negativ definit.
+} }
+{\textbf{Wie funktionieren konjugierte Gradienten?}\newline \textcolor<1>{white}{
+	beliebige Suchrichtung $p_n$ für die Minimierung von $f(x)$ zulassen: $x_{n+1}+\alpha_np_n$, wobei $\alpha_n$ ähnlich zum Gradientenabstieg bestimmt werde kann: $\alpha_n=\frac{p_n^Tr_n}{p_n^TAp_n}$. Wenn $p_n$ gleich dem negativen Gradienten $-\nabla f(x)=r_n$ entspricht, ist dies äquiv. zum Gradientenabstieg. 
+} }
+{\textbf{Wann werden konjugierte Gradienten angewendet?\newline} \textcolor<1>{white}{
+	Konjugierte Gradienten werden angewendet, wenn die Matrix $A^(m\times m)$ sehr groß ist. (z.B.: $m>10000$).
+} }
+{\textbf{Wofür steht bei konjugierten Gradienten der Parameter $\alpha$?\newline} \textcolor<1>{white}{
+	$\alpha$ steht für Schrittweite des Abstiegs. Beim Gradientenabstieg ist $\alpha=\frac{r_n^Tr_n}{r_n^TAr_n}$, bei konjugierten Gradienten ist $\alpha=\frac{r_n^Tr_n}{p_n^TAp_n}$.
+} }
+{\textbf{Welche Formen von Konvergenz gibt es beim Gradientenabstieg?\newline} \textcolor<1>{white}{
+		\newline
+		\begin{tabularx}{\textwidth}{X|X}
+			Sphärische Konvergenz &Konvergenz in einem Schritt\\\hdashline
+			Elliptische Konvergenz, \mbox{Startpunkt auf Hauptachse} &Konvergenz in einem Schritt\\\hdashline
+			Elliptische Konvergenz, \mbox{beliebiger Startpunkt} &Langsame Konvergenz
+		\end{tabularx}
 } }
 }%
 
-\newcommand*{\NumberOfQuizes}{30}%
+\newcommand*{\NumberOfQuizes}{45}%
 \pgfmathrandomlistcopy{Words}{WordsMaster}
 
 \foreach \QuizNumber in {1,...,\NumberOfQuizes} {%
@@ -286,6 +304,7 @@
 \end{frame}
 
 \begin{frame}<2>
+	\raggedright
     \RandomQuestion
 \end{frame}
 
