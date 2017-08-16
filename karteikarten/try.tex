@@ -208,6 +208,44 @@
 {\textbf{ Was ist die Idee der Konditionierung?\newline} \textcolor<1>{white}{
 		Das Problem als Funktion modellieren, welche bei Eingabe $x$ Ausgabe $f(x)$ liefert. Ein Problem ist gut konditioniert, wenn eine kleine Pertubation in $x$ auch nur eine kleine Pertubation in $f(x)$ bewirkt. Umgekehrt sollte klar sein. 
 } }
+{\textbf{ Was bedeutet es, wenn ein Problem gut konditioniert ist?\newline} \textcolor<1>{white}{
+		Ein Problem ist gut konditioniert, wenn eine kleine Pertubation in $x$ auch nur eine kleine Pertubation in $f(x)$ bewirkt. Umgekehrt sollte klar sein. Die Pertubartionen werden in realtiven Änderungsraten gemessen mit:$\frac{\|\delta x\|}{\|x\|}, \; \frac{\|f(x+\delta x)-f(x)\|}{\|f(x)\|}$.
+} }
+{\textbf{ Was sind finite Differenzen?\newline} \textcolor<1>{white}{
+		\begin{align*}
+			\text{Vorwärtsdiff.} &f'[i]&\approx\frac{f[i+1]-f[i]}{h}\\
+			\text{Rückwärtsdiff.}&f'[i]&\approx\frac{f[i]-f[i-1]}{h}\\
+			\text{Zentrale Diff.}&f'[i]&\approx\frac{f[i+1]-f[i-1]}{2h}
+		\end{align*}
+		$\mathop{\!\mathbin\bigtriangleup} u[i,j,t]=\frac{u[i-1,j,t]+u[i+1,j,t]+u[i,j-1,t]+u[i,j+1.t]-4u[i,j,t]}{h^2}$
+} }
+{\textbf{ Was sind parabolische, hyperbolische und elliptische PDEs?\newline} \textcolor<1>{white}{
+		Parabolische PDEs beschreiben dynamische Gleichungen die gegen ein statisches Equilibrium konvergieren. Elliptische PDEs beschreiben statische Gleichgewichtszustände und hyperbolische modellieren dynamische Systeme ohne Gleichgewicht.
+} }
+{\textbf{ Was besagt Diskretisierung?\newline} \textcolor<1>{white}{
+		Grundlegende Idee: Versuch eine Kurve mit einer endlichen Anzahl an Parametern zu beschreiben.
+		Die Kurve wird mittels Basisfunktion $\varphi_j$ und Koeffizienten $f_j$ dargestellt: $\displaystyle f(x)=\sum_{j=1}^n f_j\varphi_j(x)$. 
+} }
+{\textbf{ Wie lässt sich die erste Ableitung mittels finiter Differenzen approximieren?\newline} \textcolor<1>{white}{
+		Taylor-Entwicklung erster Ordnung $f(x)+hf'(x)+O(h^2)$ nach $f'(x)$ auflösen $\Rightarrow f'(x)\approx\frac{f(x+h)-f(x)}{h}$. Wird $f(x)$ diskretisiert mit $f[i]=f(ih)$ ergibt sich die Vorwärts- und Rückwärtsdifferenz, sowie die Zentrale Differenz.
+} }
+{\textbf{ Was ist der Unterschied zwischen $\mathop{\!\mathbin\bigtriangleup} u[i,j,t],\;-\mathop{\!\mathbin\bigtriangleup} u[i,j,t]$?\newline} \textcolor<1>{white}{
+		$\mathop{\!\mathbin\bigtriangleup} u[i,j,t]$: Nachbarn addiert und dann das Zentrum 4-mal abziehen.\\
+		$-\mathop{\!\mathbin\bigtriangleup} u[i,j,t]$: Zentrum mit 4 multiplizieren und dann die Nachbarn abziehen.
+} }
+{\textbf{Wie sieht die Heat-Equation aus?\newline} \textcolor<1>{white}{
+		$\dot{u}=\mathop{\!\mathbin\bigtriangleup}u$
+} }
+{\textbf{Was sagt die Heat-Equation aus?\newline} \textcolor<1>{white}{
+		Die Heat-Equation beschreibt den Fluss von Wärme in Richtung der Nachbarn.
+} }
+{\textbf{Was ist der implizite Euler?\newline} \textcolor<1>{white}{
+		$u[i,j,t+1]=u[i,j,t]+\delta t \cdot\mathop{\!\mathbin\bigtriangleup}u[i,j,t+1]$\\
+		\textbf{Vorteil:} stabil für jeden Zeitschritt, \textbf{Nachteil:} hoher Rechenaufwand
+} }
+{\textbf{Was ist der explizite Euler?\newline} \textcolor<1>{white}{
+		Die Heat-Equation beschreibt den Fluss von Wärme in Richtung der Nachbarn.
+} }
 }%
 
 \newcommand*{\NumberOfQuizes}{20}%

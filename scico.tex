@@ -267,8 +267,8 @@
 	\fbox{\parbox[c]{\textwidth}{
 	\begin{tabular}{c|c}
 		explizit & implizit\\\hline
-		Explizit: Berechne $v[i,j]=\mathop{}\!\mathbin\bigtriangleup u=\dot{u}$ &Implizit:$u[i,jt+1]=u[i,j]+\delta t \cdot \mathop{}\!\mathbin\bigtriangleup u[i,j,t+1]$ \\
-		und dann $u[i,jt+1]=u[i,j]+\delta t \cdot v[i,j]$ &  erfordert also das lösen des GLs:$(I-\delta t \mathop{}\!\mathbin\bigtriangleup)u[t+1]=u[t]$\\
+		Explizit: Berechne $v[i,j]=\mathop{}\!\mathbin\bigtriangleup u=\dot{u}$ &Implizit:$u[i,j,t+1]=u[i,j,t]+\delta t \cdot \mathop{}\!\mathbin\bigtriangleup u[i,j,t+1]$ \\
+		und dann $u[i,j,t+1]=u[i,j,t]+\delta t \cdot v[i,j]$ &  erfordert also das lösen des GLs:$(I-\delta t \mathop{}\!\mathbin\bigtriangleup)u[t+1]=u[t]$\\
 		\textbf{Vorteile:}&\textbf{Vorteile:}\\
 		einfach zu verstehen& verwendet Zeitableitung $\dot{u}$ am nächsten Zeitpunkt $u[t+1]$\\
 		einfach zu implementieren & stabil für jeden Zeitschritt \\
