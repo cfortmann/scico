@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Arch Linux) (preloaded format=pdflatex 2017.8.11)  14 AUG 2017 18:38
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Arch Linux) (preloaded format=pdflatex 2017.8.11)  16 AUG 2017 15:42
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1548,7 +1548,9 @@ ABD: EveryShipout initializing macros
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <14.4> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 55.
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 56.
+LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <10> not available
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 58.
 LaTeX Font Info:    Try loading font information for OT1+ztmcm on input line 59
 .
 (/usr/share/texmf-dist/tex/latex/psnfss/ot1ztmcm.fd
@@ -1588,130 +1590,494 @@ LaTeX Font Info:    Try loading font information for U+wasy on input line 59.
 (/usr/share/texmf-dist/tex/latex/wasysym/uwasy.fd
 File: uwasy.fd 2003/10/30 v2.0 Wasy-2 symbol font definitions
 )
-LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <10> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 62.
+Overfull \hbox (15.3358pt too wide) in paragraph at lines 58--60
+[] 
+ []
 
-Underfull \hbox (badness 10000) in paragraph at lines 103--106
+<Axb.png, id=39, 361.35pt x 144.54pt>
+File: Axb.png Graphic file (type png)
+<use Axb.png>
+Package pdftex.def Info: Axb.png  used on input line 62. on input line 62.
+Package pdftex.def Info: Requested size: 108.40584pt x 43.36232pt on input line
+ 62.
+
+Overfull \hbox (15.3358pt too wide) in paragraph at lines 60--63
+[] 
+ []
+
+
+Overfull \hbox (15.3358pt too wide) in paragraph at lines 63--65
+[] 
+ []
+
+
+Overfull \hbox (15.3358pt too wide) in paragraph at lines 65--95
+[] 
+ []
+
+
+Overfull \hbox (15.3358pt too wide) in paragraph at lines 96--98
+[] 
+ []
+
+
+Overfull \hbox (15.3358pt too wide) in paragraph at lines 98--100
+[] 
+ []
+
+
+Overfull \hbox (15.3358pt too wide) in paragraph at lines 100--105
+[] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 114--114
 
  []
 
-LaTeX Font Info:    Try loading font information for OMS+ptm on input line 106.
+LaTeX Font Info:    Try loading font information for OMS+ptm on input line 114.
 
 (/usr/share/texmf-dist/tex/latex/psnfss/omsptm.fd
 File: omsptm.fd 
 )
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 106.
- [1
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 114.
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-Package hyperref Info: bookmark level for unknown todo defaults to 0 on input l
-ine 143.
-
-Underfull \hbox (badness 10000) in paragraph at lines 169--171
-
- []
-
-[2]
-<Finitvor.png, id=78, 1104.125pt x 230.8625pt>
-File: Finitvor.png Graphic file (type png)
-<use Finitvor.png>
-Package pdftex.def Info: Finitvor.png  used on input line 208. on input line 20
-8.
-Package pdftex.def Info: Requested size: 331.24005pt x 69.25928pt on input line
- 208.
-<FiniteDiffs.png, id=80, 602.25pt x 200.75pt>
-File: FiniteDiffs.png Graphic file (type png)
-<use FiniteDiffs.png>
-Package pdftex.def Info: FiniteDiffs.png  used on input line 213. on input line
- 213.
-Package pdftex.def Info: Requested size: 240.89572pt x 80.29857pt on input line
- 213.
- [3 <./Finitvor.png> <./FiniteDiffs.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 256--257
-
- []
-
-
-Overfull \hbox (0.79834pt too wide) in paragraph at lines 261--263
-\T1/ptm/m/n/10 Der im-plizite Eu-ler kon-vergiert im-mer gegen den statis-chen 
-Gle-ichgewicht-szu-s-tand der Heat-Equation, der durch die Laplace-Equation
- []
-
-
-Overfull \hbox (16.93353pt too wide) in paragraph at lines 295--295
+Overfull \hbox (15.3358pt too wide) in paragraph at lines 109--115
 [] 
  []
 
-[4]
-<konvergenzgradient.png, id=123, 770.88pt x 313.17pt>
+
+Overfull \hbox (15.3358pt too wide) in paragraph at lines 115--117
+[] 
+ []
+
+
+Overfull \hbox (15.3358pt too wide) in paragraph at lines 117--119
+[] 
+ []
+
+
+Overfull \hbox (15.3358pt too wide) in paragraph at lines 119--121
+[] 
+ []
+
+
+Overfull \hbox (15.3358pt too wide) in paragraph at lines 121--124
+[] 
+ []
+
+[1
+
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./Axb.png>]
+<GeoHer.png, id=66, 752.8125pt x 281.05pt>
+File: GeoHer.png Graphic file (type png)
+<use GeoHer.png>
+Package pdftex.def Info: GeoHer.png  used on input line 138. on input line 138.
+
+Package pdftex.def Info: Requested size: 225.84549pt x 84.31564pt on input line
+ 138.
+
+Overfull \hbox (15.3358pt too wide) in paragraph at lines 124--139
+[] 
+ []
+
+
+Overfull \hbox (15.3358pt too wide) in paragraph at lines 139--141
+[] 
+ []
+
+
+Overfull \hbox (15.3358pt too wide) in paragraph at lines 141--143
+[] 
+ []
+
+
+Overfull \hbox (15.3358pt too wide) in paragraph at lines 143--145
+[] 
+ []
+
+
+Overfull \hbox (15.3358pt too wide) in paragraph at lines 145--153
+[] 
+ []
+
+<symgauss.png, id=67, 514.92375pt x 84.315pt>
+File: symgauss.png Graphic file (type png)
+<use symgauss.png>
+Package pdftex.def Info: symgauss.png  used on input line 181. on input line 18
+1.
+Package pdftex.def Info: Requested size: 205.96585pt x 33.72539pt on input line
+ 181.
+
+Overfull \hbox (15.3358pt too wide) in paragraph at lines 154--182
+[] 
+ []
+
+
+Overfull \hbox (15.3358pt too wide) in paragraph at lines 182--185
+[] 
+ []
+
+
+Overfull \hbox (15.3358pt too wide) in paragraph at lines 185--199
+[] 
+ []
+
+[2 <./GeoHer.png> <./symgauss.png>]
+Overfull \hbox (15.3358pt too wide) in paragraph at lines 199--203
+[] 
+ []
+
+
+Overfull \hbox (15.3358pt too wide) in paragraph at lines 203--207
+[] 
+ []
+
+
+Overfull \hbox (15.3358pt too wide) in paragraph at lines 207--209
+[] 
+ []
+
+<solver.png, id=83, 816.04875pt x 271.0125pt>
+File: solver.png Graphic file (type png)
+<use solver.png>
+Package pdftex.def Info: solver.png  used on input line 212. on input line 212.
+
+Package pdftex.def Info: Requested size: 408.02338pt x 135.5059pt on input line
+ 212.
+
+Overfull \hbox (15.3358pt too wide) in paragraph at lines 209--213
+[] 
+ []
+
+<svd.png, id=84, 391.4625pt x 150.5625pt>
+File: svd.png Graphic file (type png)
+<use svd.png>
+Package pdftex.def Info: svd.png  used on input line 216. on input line 216.
+Package pdftex.def Info: Requested size: 156.58221pt x 60.22392pt on input line
+ 216.
+
+Overfull \hbox (15.3358pt too wide) in paragraph at lines 213--217
+[] 
+ []
+
+
+Overfull \hbox (15.3358pt too wide) in paragraph at lines 221--223
+[] 
+ []
+
+
+Overfull \hbox (15.3358pt too wide) in paragraph at lines 224--226
+[] 
+ []
+
+<Finitvor.png, id=85, 1104.125pt x 230.8625pt>
+File: Finitvor.png Graphic file (type png)
+<use Finitvor.png>
+Package pdftex.def Info: Finitvor.png  used on input line 241. on input line 24
+1.
+Package pdftex.def Info: Requested size: 331.24005pt x 69.25928pt on input line
+ 241.
+<FiniteDiffs.png, id=86, 602.25pt x 200.75pt>
+File: FiniteDiffs.png Graphic file (type png)
+<use FiniteDiffs.png>
+Package pdftex.def Info: FiniteDiffs.png  used on input line 241. on input line
+ 241.
+Package pdftex.def Info: Requested size: 240.89572pt x 80.29857pt on input line
+ 241.
+
+Overfull \hbox (15.3358pt too wide) in paragraph at lines 227--242
+[] 
+ []
+
+[3 <./solver.png> <./svd.png>]
+Overfull \hbox (15.3358pt too wide) in paragraph at lines 243--245
+[] 
+ []
+
+
+Overfull \hbox (15.3358pt too wide) in paragraph at lines 245--249
+[] 
+ []
+
+
+Overfull \hbox (15.3358pt too wide) in paragraph at lines 249--258
+[] 
+ []
+
+
+Overfull \hbox (15.3358pt too wide) in paragraph at lines 258--262
+[] 
+ []
+
+
+Overfull \hbox (15.3358pt too wide) in paragraph at lines 266--268
+[] 
+ []
+
+
+Overfull \hbox (15.3358pt too wide) in paragraph at lines 268--270
+[] 
+ []
+
+
+Overfull \hbox (15.3358pt too wide) in paragraph at lines 270--283
+[] 
+ []
+
+[4 <./Finitvor.png> <./FiniteDiffs.png>]
+Overfull \hbox (15.3358pt too wide) in paragraph at lines 285--287
+[] 
+ []
+
+
+Overfull \hbox (15.3358pt too wide) in paragraph at lines 287--289
+[] 
+ []
+
+
+Overfull \hbox (15.3358pt too wide) in paragraph at lines 289--291
+[] 
+ []
+
+
+Overfull \hbox (15.3358pt too wide) in paragraph at lines 291--293
+[] 
+ []
+
+
+Overfull \hbox (15.3358pt too wide) in paragraph at lines 293--295
+[] 
+ []
+
+
+Overfull \hbox (15.3358pt too wide) in paragraph at lines 295--300
+[] 
+ []
+
+
+Overfull \hbox (15.3358pt too wide) in paragraph at lines 300--302
+[] 
+ []
+
+
+Overfull \hbox (15.3358pt too wide) in paragraph at lines 302--304
+[] 
+ []
+
+
+Overfull \hbox (15.3358pt too wide) in paragraph at lines 304--306
+[] 
+ []
+
+
+Overfull \hbox (15.3358pt too wide) in paragraph at lines 306--314
+[] 
+ []
+
+
+Overfull \hbox (15.3358pt too wide) in paragraph at lines 317--325
+[] 
+ []
+
+[5]
+Overfull \hbox (15.3358pt too wide) in paragraph at lines 325--327
+[] 
+ []
+
+
+Overfull \hbox (15.3358pt too wide) in paragraph at lines 327--330
+[] 
+ []
+
+<konvergenzgradient.png, id=132, 770.88pt x 313.17pt>
 File: konvergenzgradient.png Graphic file (type png)
 <use konvergenzgradient.png>
-Package pdftex.def Info: konvergenzgradient.png  used on input line 302. on inp
-ut line 302.
+Package pdftex.def Info: konvergenzgradient.png  used on input line 332. on inp
+ut line 332.
 Package pdftex.def Info: Requested size: 231.26578pt x 93.95172pt on input line
- 302.
+ 332.
 
-Underfull \hbox (badness 10000) in paragraph at lines 314--316
-
- []
-
-[5 <./konvergenzgradient.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 335--337
-
+Overfull \hbox (15.3358pt too wide) in paragraph at lines 330--333
+[] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 345--348
+Overfull \hbox (15.3358pt too wide) in paragraph at lines 333--338
+[] 
+ []
+
+
+Overfull \hbox (15.3358pt too wide) in paragraph at lines 339--341
+[] 
+ []
+
+
+Overfull \hbox (15.3358pt too wide) in paragraph at lines 341--344
+[] 
+ []
+
+
+Overfull \hbox (15.3358pt too wide) in paragraph at lines 344--352
+[] 
+ []
+
+
+Overfull \hbox (15.3358pt too wide) in paragraph at lines 352--354
+[] 
+ []
+
+
+Overfull \hbox (15.3358pt too wide) in paragraph at lines 358--360
+[] 
+ []
+
+[6 <./konvergenzgradient.png>]
+Overfull \hbox (15.3358pt too wide) in paragraph at lines 360--362
+[] 
+ []
+
+
+Overfull \hbox (15.3358pt too wide) in paragraph at lines 362--364
+[] 
+ []
+
+
+Overfull \hbox (15.3358pt too wide) in paragraph at lines 364--366
+[] 
+ []
+
+
+Overfull \hbox (15.3358pt too wide) in paragraph at lines 366--372
+[] 
+ []
+
+
+Overfull \hbox (15.3358pt too wide) in paragraph at lines 372--376
+[] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 382--382
 
  []
 
-<bandmatrix.png, id=140, 378.41376pt x 313.17pt>
+
+Overfull \hbox (15.3358pt too wide) in paragraph at lines 376--383
+[] 
+ []
+
+
+Overfull \hbox (15.3358pt too wide) in paragraph at lines 387--389
+[] 
+ []
+
+
+Overfull \hbox (15.3358pt too wide) in paragraph at lines 389--392
+[] 
+ []
+
+<bandmatrix.png, id=147, 378.41376pt x 313.17pt>
 File: bandmatrix.png Graphic file (type png)
 <use bandmatrix.png>
-Package pdftex.def Info: bandmatrix.png  used on input line 361. on input line 
-361.
-Package pdftex.def Info: Requested size: 378.41283pt x 313.16922pt on input lin
-e 361.
-[6]
-Underfull \hbox (badness 10000) in paragraph at lines 380--386
+Package pdftex.def Info: bandmatrix.png  used on input line 394. on input line 
+394.
+Package pdftex.def Info: Requested size: 113.525pt x 93.95172pt on input line 3
+94.
+
+Overfull \hbox (15.3358pt too wide) in paragraph at lines 392--395
+[] 
+ []
+
+
+Overfull \hbox (15.3358pt too wide) in paragraph at lines 395--396
+[] 
+ []
+
+
+Overfull \hbox (15.3358pt too wide) in paragraph at lines 396--400
+[] 
+ []
+
+[7 <./bandmatrix.png>]
+Overfull \hbox (15.3358pt too wide) in paragraph at lines 400--402
+[] 
+ []
+
+
+Overfull \hbox (15.3358pt too wide) in paragraph at lines 402--405
+[] 
+ []
+
+
+Overfull \hbox (15.3358pt too wide) in paragraph at lines 406--408
+[] 
+ []
+
+
+Overfull \hbox (15.3358pt too wide) in paragraph at lines 408--412
+[] 
+ []
+
+
+Overfull \hbox (15.3358pt too wide) in paragraph at lines 412--414
+[] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 425--425
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 386--396
+Overfull \hbox (15.3358pt too wide) in paragraph at lines 419--426
+[] 
+ []
+
+
+Overfull \hbox (15.3358pt too wide) in paragraph at lines 426--437
+[] 
+ []
+
+
+Overfull \hbox (15.3358pt too wide) in paragraph at lines 437--439
+[] 
+ []
+
+
+Overfull \hbox (15.3358pt too wide) in paragraph at lines 439--441
+[] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 445--445
 
  []
 
 
-LaTeX Font Warning: Font shape `OMS/ptm/bx/n' undefined
-(Font)              using `OMS/ptm/m/n' instead
-(Font)              for symbol `textbullet' on input line 396.
+Overfull \hbox (15.3358pt too wide) in paragraph at lines 441--446
+[] 
+ []
 
-LaTeX Font Info:    Font shape `OMS/ptm/bx/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 396.
-[7 <./bandmatrix.png>] [8]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 402.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 402.
+[8]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 447.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 447.
  (./scico.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 402.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 402.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 447.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 447.
 Package rerunfilecheck Info: File `scico.out' has not changed.
-(rerunfilecheck)             Checksum: B63B4F0486D449CCC161E70C4095CD46;345.
-
-
-LaTeX Font Warning: Some font shapes were not available, defaults substituted.
-
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 402.
+(rerunfilecheck)             Checksum: FE2CB30B6DC312C77CF495E638BCB7A8;480.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 447.
  ) 
 Here is how much of TeX's memory you used:
- 29888 strings out of 492990
- 556464 string characters out of 6138688
- 639628 words of memory out of 5000000
- 32855 multiletter control sequences out of 15000+600000
+ 29851 strings out of 492990
+ 555307 string characters out of 6138688
+ 640383 words of memory out of 5000000
+ 32817 multiletter control sequences out of 15000+600000
  564411 words of font info for 79 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 62i,16n,80p,10416b,870s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 62i,19n,56p,10416b,492s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texmf-dist/fon
 ts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-dist/fonts/type1/publi
 c/amsfonts/cm/cmmi10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/
@@ -1720,10 +2086,10 @@ r/share/texmf-dist/fonts/type1/urw/symbol/usyr.pfb></usr/share/texmf-dist/fonts
 /type1/urw/symbol/usyr.pfb></usr/share/texmf-dist/fonts/type1/urw/times/utmb8a.
 pfb></usr/share/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texmf-d
 ist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on scico.pdf (8 pages, 192576 bytes).
+Output written on scico.pdf (8 pages, 256311 bytes).
 PDF statistics:
- 234 PDF objects out of 1000 (max. 8388607)
- 204 compressed objects within 3 object streams
- 103 named destinations out of 1000 (max. 500000)
- 97 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 238 PDF objects out of 1000 (max. 8388607)
+ 199 compressed objects within 2 object streams
+ 99 named destinations out of 1000 (max. 500000)
+ 122 words of extra memory for PDF output out of 10000 (max. 10000000)
 
