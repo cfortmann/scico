@@ -58,7 +58,8 @@
 	\item \textbf{ Wie kann eine Wurfparabel approximiert werden?}\newline
 	\fbox{\parbox[c]{\textwidth}{\luf, \chf,..}}
 	\item \textbf{ Wie werden $A$ und $b$ aufgestellt?} \newline
-	\fbox{\parbox[c]{\textwidth}{b beinhaltet die Werte $y_i$ der gegebenen Punkte. In $A$ werden die Basisfunktionen gespeichert, also zB. Monome (wie Übung) werden in der ersten Zeile die $x_1^{0...n}$ und in den Spalten $x_{1..n}$ gespeichert. Somit steht in der i-ten Zeile und j-ten Spalte der Eintrag $x_{i+1}^j$.}}
+	\fbox{\parbox[c]{\textwidth}{b beinhaltet die Werte $y_i$ der gegebenen Punkte. In $A$ werden die Basisfunktionen gespeichert, also zB. Monome (wie Übung) werden in der ersten Zeile die $x_1^{0...n}$ und in den Spalten $x_{1..n}$ gespeichert. Somit steht in der i-ten Zeile und j-ten Spalte der Eintrag $x_{i+1}^j$.\\ 
+	\includegraphics[scale=0.3]{Axb}}}
 	\item \textbf{ Was ist eine Basisfunktion?} \newline
 	\fbox{\parbox[c]{\textwidth}{Eine Basisfunktion beschreibt eine Kurve mit einer endliche Anzahl von Parametern. Die von uns verwendete Basisfunktion ist die Monom-Basis $x^i$.}}
 	\item \textbf{ Wie funktioniert \luf und wie löst man das Gleichungssystem?} \newline
@@ -176,7 +177,8 @@
 	Im Algorithmus wird $L=A$ initialisiert und das obere Dreieck auf $0$ gesetzt.
 	Mit 3 for-Schleifen (aufgrund MatLab Schreibweise) werden dann die Elemente der Spalte wie folgt berechnet: $L(i,j)=L(i,j)-L(i,k)*(L(j,k)/L(k,k))$. 
 	Die Schleifen laufen über k und j und für die Spalte i.
-	Der Wert $x=1/sqrt(L(k,k))$ wird separat berechnet und zum Schluss werden die Elemente der Spalte durch $L(i,k)=L(i,k)*x$ endgültig berechnet.}}
+	Der Wert $x=1/sqrt(L(k,k))$ wird separat berechnet und zum Schluss werden die Elemente der Spalte durch $L(i,k)=L(i,k)*x$ endgültig berechnet.\\
+	Zum Schluss werden die folgenden zwei Gleichungen gelöst: $Ly=b$ und $L^Tx=y$.}}
 	\item \textbf{ Was ist fill-in und wie kommt es zustande?}\newline
 	\fbox{\parbox[c]{\textwidth}{Fill-in beschreibt, dass eine $a_{ij}=0$ in A ist, aber nach der Faktorisierung mit Cholesky $l_{ij} \neq 0$. Fill-in tritt nur innerhalb des Bandes auf alle Nullen außerhalb des Bandes bleiben erhalten.
 		Es ensteht durch die gebildete Differenz $K-ww^T$.}}
@@ -208,7 +210,10 @@
 	\fbox{\parbox[c]{\textwidth}{
 			\includegraphics[scale=0.5]{solver.png}		
 		}}
-	
+	\item \textbf{Wie sehen die SVDs aus?}\newline
+	\fbox{\parbox[c]{\textwidth}{
+	\includegraphics[scale=0.4]{svd}\\
+	Die Matrizen $U$ und $V^T$ beschreiben dabei die Reflexion und Rotation von $A$. $\Sigma$ beinhaltet nur auf der Diagonalen Elemente, die Singulärwerte, welche absteigend sortiert sind. Generell wird durch $\Sigma$ die Skalierung definiert.}}
 \end{enumerate}
 
 \section{Konditionierung und finite Differenzen}
@@ -236,8 +241,7 @@
 	}}
 	
 	\item \textbf{ Was bedeuten parabolisch, hyperbolisch und elliptisch?}\newline
-	\fbox{\parbox[c]{\textwidth}{Parabolische PDEs beschreiben dynamische Gleichungen die gegen ein statisches Equilibrium konvergieren. Elliptische PDEs beschreiben statische Gleichgewichtszustände. 
-		Hyperbolisches PDEs modellieren dynamische Systeme ohne Equilibrium.}}
+	\fbox{\parbox[c]{\textwidth}{Parabolische PDEs beschreiben dynamische Gleichungen die gegen ein statisches Equilibrium konvergieren (z.B. Heat). Elliptische PDEs beschreiben statische Gleichgewichtszustände (z.B. Laplace). Hyperbolisches PDEs modellieren dynamische Systeme ohne Equilibrium (z.B. Wave).}}
 	\item \textbf{ Was besagt Diskretisierung?} \\
 		\fbox{\parbox[c]{\textwidth}{Grundlegende Idee: Kurve (kontinuierlich) mit einer endlichen Zahl von Parametern zu beschreiben. \\
 		Dazu Kurve mittels Basisfunktionen $\varphi_j$ und Koeffizienten $f_j$ darstellen: $f(x) = \sum_{j=1}^n f_j\varphi_j(x)$.\\
@@ -262,13 +266,13 @@
 	\item \textbf{ Wie sieht die Heat-Equation aus?}\newline
 	\fbox{\parbox[c]{\textwidth}{$ \dot{u}=\mathop{}\!\mathbin\bigtriangleup u$}}
 	\item \textbf{ Was besagt $\dot{u} = \mathop{}\!\mathbin\bigtriangleup u$?}\newline
-	\fbox{\parbox[c]{\textwidth}{	Siehe vorige Frage. Bedeutung: Fluss der WÄrme in Richtung Nachbarn wird berechnet.}}
-	\item \textbf{ Was ist der explizite/implizit Euler?} (Definition und Vorteile/Nachteile sowie Unterschiede)\newline
+	\fbox{\parbox[c]{\textwidth}{	Siehe vorige Frage. Bedeutung: Fluss der Wärme in Richtung Nachbarn wird berechnet.}}
+	\item \textbf{ Was ist der explizite/implizit Euler?} (Definition und Vorteile/Nachteile sowie Unterschiede (Heat))\newline
 	\fbox{\parbox[c]{\textwidth}{
-	\begin{tabular}{c|c}
+	\begin{tabular}{l|l}
 		explizit & implizit\\\hline
-		Explizit: Berechne $v[i,j]=\mathop{}\!\mathbin\bigtriangleup u=\dot{u}$ &Implizit:$u[i,j,t+1]=u[i,j,t]+\delta t \cdot \mathop{}\!\mathbin\bigtriangleup u[i,j,t+1]$ \\
-		und dann $u[i,j,t+1]=u[i,j,t]+\delta t \cdot v[i,j]$ &  erfordert also das lösen des GLs:$(I-\delta t \mathop{}\!\mathbin\bigtriangleup)u[t+1]=u[t]$\\
+		Explizit: Berechne $v[i,j]=\mathop{}\!\mathbin\bigtriangleup u=\dot{u}$ &Implizit: $u[i,j,t+1]=u[i,j,t]+\delta t \cdot \mathop{}\!\mathbin\bigtriangleup u[i,j,t+1]$ \\
+		und dann $u[i,j,t+1]=u[i,j,t]+\delta t \cdot v[i,j]$ &  erfordert also das Lösen des GLs:$(I-\delta t )\mathop{}\!\mathbin\bigtriangleup u[t+1]=u[t]$\\
 		\textbf{Vorteile:}&\textbf{Vorteile:}\\
 		einfach zu verstehen& verwendet Zeitableitung $\dot{u}$ am nächsten Zeitpunkt $u[t+1]$\\
 		einfach zu implementieren & stabil für jeden Zeitschritt \\
@@ -365,14 +369,14 @@
 		\item  gespiegelt
 		\item Null
 	\end{enumerate}}}
-	\item \textbf{ Was ist der Unterschied zwischen implizit und explizit?} (vlg Heat.) \newline
-	\fbox{\parbox[c]{\textwidth}{Explizite Integration berechnet die Werte des nächsten Zeitpunktes $u[t+1]$ aus dem momentanen Werten am Punkt, sowie dessen Nachbarn: $u[t+1]=u[t]+\delta t \mathop{}\!\mathbin\bigtriangleup u[t]$.
-		Implizite Integration berechnet die Werte des nächsten Zeitpunktes $u[t+1]$ mithilfe des nächsten Zeitpunktes: $u[t+1]=u[t]+\delta t \mathop{}\!\mathbin\bigtriangleup u[t+1]$.
-		Zum berechnen von $u[t+1]$ müssen wir das Gleichungssystem: $(I-\delta t \mathop{}\!\mathbin\bigtriangleup )u[t+1]=u[t]$ lösen.}}
+	\item \textbf{ Was ist der Unterschied zwischen implizit und explizit?} (Wave) \newline
+	\fbox{\parbox[c]{\textwidth}{Explizite Integration berechnet die Werte des nächsten Zeitpunktes $u[t+1]$ aus dem momentanen Werten am Punkt, sowie dessen Nachbarn: $u_{t+1}=u_t+\delta t v_{t+1} $ und $v_{t+1}=v_t+\delta t c^2 L u_t$ ($L$ als Laplace Matrix).
+		Implizite Integration berechnet die Werte des nächsten Zeitpunktes $u[t+1]$ mithilfe des nächsten Zeitpunktes: $u_{t+1}=u_t+\delta t v_{t+1} $ und $v_{t+1}=v_t+\delta t c^2 L u_{t+1}$.
+		Zum berechnen von $u[t+1]$ müssen wir das Gleichungssystem: $(I-\delta t^2 c^2 L)v_{t+1}=v_t+\delta t c^2 L u_t$ ($\Leftrightarrow$ (A)x=b) lösen.}}
 	\item \textbf{ Wie sieht das lineare Gleichungssystem im impliziten Fall im Vergleich zum expliziten (Wave Equation) aus?} \\
 		\fbox{\parbox[c]{\textwidth}{Im expliziten Fall kann das Gleichungssystem in einem Schritt gelöst werden, da die Gleichungen nicht voneinander abhängen. Im impliziten Fall hängt $v_{t+1}$ aber von $u_{t+1}$ ab und umgekehrt, und muss daher als Gleichungssystem gelöst werden: \\
 	\begin{itemize}
-		\item $\left( I - \delta t^2 c^2 L \right)v_{t+1} = v_t \delta t c^2Lu_t$
+		\item $\left( I - \delta t^2 c^2 L \right)v_{t+1} = v_t + \delta t c^2Lu_t$
 		\item  Dabei ist $A = \left( I - \delta t^2 c^2 L \right)$, $ x = v_{t+1}$ (gesucht) und
 		$b = v_t \delta t c^2Lu_t$
 	\end{itemize}}}
@@ -388,13 +392,13 @@
 	\item \textbf{ Was ist eine Bandmatrix?} \newline
 	\fbox{\parbox[c]{\textwidth}{Eine Bandmatrix ist eine dünnbesetzte Matrix deren Nicht-Null-Einträge sich auf ein \glqq Band\grqq \ um die Diagonale der Matrix beschränken, wobei die Bandbreite $\beta(A)$ definiert ist als die maximale Distanz einer Nicht-Null von der Diagonalen der Matrix A.
 	\includegraphics[scale=0.3]{bandmatrix.png}}}
-	\item \textbf{ Kommt in der Sparse \chf fill-in vor?}\newline\fbox{\parbox[c]{\textwidth}{Nein.}}
+	\item \textbf{ Kommt in der Sparse \chf fill-in vor?}\newline\fbox{\parbox[c]{\textwidth}{Ja, aber es wird durch die Permutation verhindert, da $L$ weniger Nullen enthält.}}
 	\item \textbf{ Welche Schritte muss man im Sparse \chf machen?}\newline
 	\fbox{\parbox[c]{\textwidth}{Ändere die Reihenfolge der $x_i$ mittels Permutationsmatrix $P$ , so dass $\tilde{x}=Px$.\\
 	Sortiere analog $A$ um; also $\hat{A}=AP^T$. Da $A$ nun nicht mehr symmetrisch ist, permutiere nun auch die Zeilen von $A$ und $b$ respektive $\tilde{A}=P\hat{A}=PAP^T$, $\tilde{b}=Pb$.\\ 
 	Wende nun Cholesky auf $\tilde{A}\tilde{x}=\tilde{b}$ an.}}
 	\item \textbf{ Welche Vorteile hat der Sparse \chf?} \newline
-	\fbox{\parbox[c]{\textwidth}{Effizientes, robustes Verfahren für dünn-besetzte Matruzen. Durch eine Umsortierung der Matrix kann es keine fill-ins geben. Durch die Konstruktion von $\tilde{L}$ enthält sie weniger nicht 0en.}}
+	\fbox{\parbox[c]{\textwidth}{Effizientes, robustes Verfahren für dünn-besetzte Matrizen. Durch eine Umsortierung der Matrix kann es keine fill-ins geben. Durch die Konstruktion von $\tilde{L}$ enthält sie weniger nicht 0en.}}
 	\item \textbf{ Was ist die Band-\chf?} \newline
 	\fbox{\parbox[c]{\textwidth}{Zunächst lege eine Band-Matrix-Datenstruktur für L an. Der Speicherverbrauch ist nun $O(mb)$ anstatt $O(m^2)$, wobei b die Bandbreite von der Bandmatrix ist. Bei der Berechnung der $l_{ij}$ von $L$ müssen nur Einträge $l_{ij} \in Band(L)$ berücksichtigt werden, da alle anderen Einträge null sind. Dies reduziert den Rechenaufwand von $O(m^3)$ auf $O(mb^2)$.
 		Löse nun $Ly=b$ und $L^Tx=y$ unter Ausnutzung der Bandbegrenzung von L. Dies reduziert den Aufwand von $O(m^2)$ auf $O(mb)$.}}
@@ -405,6 +409,8 @@
 	\fbox{\parbox[c]{\textwidth}{
 	Ziel: Permutation finden, sodass $LL^T=PAP^T$ möglichst wenig fill-in besitzt.\\
 	Dazu suche den Knoten $v$ mit den wenigsten Kanten und nummeriere diesen. Des Weiteren verbinde die Nachbarn von $v$ miteinander.}}
+	\item \textbf{Was ist der Aufwand von Sparse-Cholesky?}\newline
+	\fbox{\parbox[c]{\textwidth}{Insgesamt ist der Aufwand O(m), wobei er hier stark von der Anzahl der Nicht-Nullen abhängt.}}
 \end{enumerate}
 
 \section{Optimierung}
@@ -431,6 +437,11 @@
 	\item \textbf{ Worauf muss man bei Parallelisierung achten?}\newline
 	\fbox{\parbox[c]{\textwidth}{Zu beachten ist, dass manche Variablen private gesetzt werden müssenalso der Speicherzugriff eindeutig sein muss.  }}
 	\item \textbf{ Wie kann man Code optimieren?}\newline
-	\fbox{\parbox[c]{\textwidth}{Bsp.: Call by Reference, Return by Reference, Inlinen von Funktionen.}}
+	\fbox{\parbox[c]{\textwidth}{Bsp.: Call by Reference, Return by Reference, Inlinen von Funktionen.}} 
+	\item \textbf{Wie hat man in den Übungen (Bildglättung) SSE sinnvoll zur Optimierung benutzt?}\newline
+	\fbox{\parbox[c]{\textwidth}{
+	SSE: Streaming SIMD Extension: SIMD Operation auf Gleitkommazahlen.\\
+	SIMD: Single Instruction Multiple Data.\\
+	\\Die RGBA (A für $\alpha$) Werte wurden mittels SSE Vektorisierung in einen Vektor der Dimension 4 geschrieben ( Datentyp 4 single precision floats, 128 Bit Register). Dadurch konnte auf ihnen, mit Hilfe von OpenMp, parallel gerechnet werden (pragma). Die einzelnen Vektoren mussten dafür private gesetzt werden. Private bedeutet, dass jeder Thread über eine eigene Kopie des Vektors (Variable) verfügt. Zum Schluss wurden die Ergebnisse in ein Ergebnisvektor reduziert.}}
 \end{enumerate}
 \end{document}
