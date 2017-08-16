@@ -406,7 +406,7 @@
 	\fbox{\parbox[c]{\textwidth}{Geringerer Speicherplatzverbrauch und schneller (vgl. Frage davor).}}
 	\item \textbf{Wozu verwendet man den Eliminationsgraphen und wie funktioniert dieser?}\newline
 	\fbox{\parbox[c]{\textwidth}{Der Eliminationsgraph ermittelt die Anzahl der Fill-ins, die durch die \chf neu auftreten. Aufgestellt wird er so: Erstelle einen Konten für jede Spalte.
-	Wenn ein Element $a_{ij}$ von A nicht Null ist ($a_{ij} \neq 0$), ziehe eine Kante zwischen den Knoten i und j. Dies ergibt den initialen Graphen. Nun entferne sukzessive die Knoten(angefangen mit Knoten 1) bis nur noch ein Knoten übrig ist. Wenn ein Weg zwischen zwei Knoten über den gelöschten Knoten führte, so ziehe eine neue Kante zwischen den beiden Knoten. Alle so neu gezogenen Kanten stellen Fill-ins dar, die in der \chf auftreten werden.}}
+	Wenn ein Element $a_{ij}$ von A nicht Null ist ($a_{ij} \neq 0$), ziehe eine Kante zwischen den Knoten i und j. Dies ergibt den initialen Graphen. Nun entferne sukzessive die Knoten (angefangen mit Knoten 1) bis nur noch ein Knoten übrig ist. Wenn ein Weg zwischen zwei Knoten über den gelöschten Knoten führte, so erstelle eine neue Kante zwischen den beiden Knoten. Alle so neu erstellten Kanten stellen Fill-ins dar, die in der \chf auftreten werden.}}
 	\item \textbf{ Was macht der Minimum degree-Algorithmus?}\newline
 	\fbox{\parbox[c]{\textwidth}{
 	Ziel: Permutation finden, sodass $LL^T=PAP^T$ möglichst wenig fill-in besitzt.\\
