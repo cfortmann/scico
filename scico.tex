@@ -121,6 +121,8 @@
 	\item \textbf{ Was sind Normalengleichungen und wie sind sie definiert? Welche Dimension hat $A^TA$?}\newline
              \fbox{\parbox[c]{\textwidth}{ Erster Teil siehe nächste Frage/Antwort.\\
               $A^TA \in (n \times n)$.}}
+        \item \textbf{Was ist das Least-Squares Problem?}\newline
+        \fbox{\parbox[c]{\textwidth}{Finde ein x, sd. $r=||Ax-b||^2 $ minimiert wird, wobei $r$ das Residuum ist.  }}
 	\item \textbf{ Wie leitet man die Normalengleichung her?}\newline
 	\fbox{\parbox[c]{\textwidth}{3 Herleitungen, geometrische: \begin{align*}
 	Ax=b & \text{ nicht lösbar, da }b \text{ nicht in }range(A)\\
@@ -311,7 +313,10 @@
 			\item $-L$ ist positiv definit ($L$ negativ definit).
 		\end{itemize}
 		}}
+	\item \textbf{ Wann ist eine Matrix dünn-besetzt?}\\
+	\fbox{\parbox[c]{\textwidth}{Bsp.: Laplace-Matrix. Es muss mehr Null-Einträge geben als Nicht-Null.}}
 \end{enumerate}
+
 \section{Konjugierte Gradienten \& Gradientenabstieg}
 \begin{enumerate}[resume=b]
 	\item \textbf{ Wie funktionieren konjugierte Gradienten?}\newline
@@ -423,7 +428,7 @@
 	id = omp\_get\_thread\_num ();  Welcher Thread ?\\
 	int nthreads = omp\_get\_num\_threads () Wieviele? \\
 	}}
-	\item \textbf{ Welche Kommandozeilen Argumente?} \newline
+	\item \textbf{ Welche Compileroptionen kann man zur Optimierung verwenden?} \newline
 	\fbox{\parbox[c]{\textwidth}{\begin{itemize}
 			\item  -O: schaltet einfache Optimierungen ein
 			\item  -O3: mehr Optimierungen, insbesondere function inlining
@@ -435,13 +440,13 @@
 		\end{itemize}
 	}}
 	\item \textbf{ Worauf muss man bei Parallelisierung achten?}\newline
-	\fbox{\parbox[c]{\textwidth}{Zu beachten ist, dass manche Variablen private gesetzt werden müssenalso der Speicherzugriff eindeutig sein muss.  }}
-	\item \textbf{ Wie kann man Code optimieren?}\newline
-	\fbox{\parbox[c]{\textwidth}{Bsp.: Call by Reference, Return by Reference, Inlinen von Funktionen.}} 
+	\fbox{\parbox[c]{\textwidth}{Zu beachten ist, dass manche Variablen private gesetzt werden müssen also der Speicherzugriff eindeutig sein muss.  }}
+	\item \textbf{Wie kann C++ Code optimiert werden?}\newline
+	\fbox{\parbox[c]{\textwidth}{Konstante Rückgabewerte, Vermeidung von temporären Objekten, Funktionsargumente per Referenz übergeben, Function inlining, Compileroptionen (s. vorher), SSE (s. nacher), OpenMP }}
 	\item \textbf{Wie hat man in den Übungen (Bildglättung) SSE sinnvoll zur Optimierung benutzt?}\newline
 	\fbox{\parbox[c]{\textwidth}{
 	SSE: Streaming SIMD Extension: SIMD Operation auf Gleitkommazahlen.\\
 	SIMD: Single Instruction Multiple Data.\\
-	\\Die RGBA (A für $\alpha$) Werte wurden mittels SSE Vektorisierung in einen Vektor der Dimension 4 geschrieben ( Datentyp 4 single precision floats, 128 Bit Register). Dadurch konnte auf ihnen, mit Hilfe von OpenMp, parallel gerechnet werden (pragma). Die einzelnen Vektoren mussten dafür private gesetzt werden. Private bedeutet, dass jeder Thread über eine eigene Kopie des Vektors (Variable) verfügt. Zum Schluss wurden die Ergebnisse in ein Ergebnisvektor reduziert.}}
+	Die RGBA (A für $\alpha$) Werte wurden mittels SSE Vektorisierung in einen Vektor der Dimension 4 geschrieben ( Datentyp 4 single precision floats, 128 Bit Register). Dadurch konnte auf ihnen, mit Hilfe von OpenMp, parallel gerechnet werden (pragma). Die einzelnen Vektoren mussten dafür private gesetzt werden. Private bedeutet, dass jeder Thread über eine eigene Kopie des Vektors (Variable) verfügt. Zum Schluss werden die Ergebnisse in einem Ergebnisvektor reduziert.}}
 \end{enumerate}
 \end{document}
