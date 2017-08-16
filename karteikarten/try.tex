@@ -244,7 +244,7 @@
 		\textbf{Vorteil:} stabil für jeden Zeitschritt, \textbf{Nachteil:} hoher Rechenaufwand
 } }
 {\textbf{Was ist der explizite Euler? (HEAT)\newline} \textcolor<1>{white}{
-		Berechne $v[i,j]=t\mathop{\!\mathbin\bigtriangleup}u=\dot{u}$ und anschließend $u[i,j,t+1]=u[i,j,t]+\delta t\cdot v[i,j]$\\
+		Berechne $v[i,j]=t\mathop{\!\mathbin\bigtriangleup}u=\dot{u}$ und anschließend $u[i,j,t+1]=u[i,j,t]+\delta t\cdot \mathop{\!\mathbin\bigtriangleup}u[i,j,t]$\\
 		\textbf{Vorteil:} schnell und einfach zu implementieren, \textbf{Nachteil:} instabil bei großen Zeitsprüngen, da $\delta t$ nicht mehr konvergiert, der Fehler stark zunimmt und somit keine Lösung mehr möglich ist.
 } }
 {\textbf{Was passiert bei zu hohen Schritten im expliziten Euler?\newline} \textcolor<1>{white}{
@@ -259,9 +259,17 @@
 {\textbf{Was passiert mit den Randpunkten? (HEAT)\newline} \textcolor<1>{white}{
 		Die Randpunkte bleiben konstant.
 } }
+{\textbf{Wie stellt man das lineare Gleichungssystem für die Laplace-Gleichung auf?\newline} \textcolor<1>{white}{
+	Jeder Punkt im Gitter ist eine Unbekannte, die berechnet werden muss. Wir haben also bei einem $(N$ x $N)$ Gitter $(N-2)$x$(N-2)$ Unbekannte (Randpunkte verändern sich nicht). Dies führt zu einem $(N-2)^2$ x $(N-2)^2$ Gleichungssystem $-Lu=b$.
+	$u$ ist ein Spaltenvektor in dem die neuen Werte $u$ für das Gitter stehen. Die Reihenfolge, in der die Gitterpunkte in $u$ stehen, führt zu einer Index Abbildung: $u_k=u(i,j)$ mit $k=idx(i,j)=(i-1)+(j-2)\cdot(N-2)$.
+	Für die Matrix L gilt: $l_{kk}=4, l_{kl}=-1/h^2$, wenn (\={i}, \={j}) Nachbarn von i, j und $l$=idx(\={i},\={j}) sonst $l_{kl}=0$.
+} }
+{\textbf{Warum stellt man das lineare Gleichungssystem für den auf?\newline} \textcolor<1>{white}{
+ Wir wollen nur das Gleichgewicht betrachten, welches nicht mit expliziter Integration lösbar ist
+} }
 }%
 
-\newcommand*{\NumberOfQuizes}{20}%
+\newcommand*{\NumberOfQuizes}{30}%
 \pgfmathrandomlistcopy{Words}{WordsMaster}
 
 \foreach \QuizNumber in {1,...,\NumberOfQuizes} {%
