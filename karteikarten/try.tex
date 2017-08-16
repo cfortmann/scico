@@ -265,7 +265,13 @@
 	Für die Matrix L gilt: $l_{kk}=4, l_{kl}=-1/h^2$, wenn (\={i}, \={j}) Nachbarn von i, j und $l$=idx(\={i},\={j}) sonst $l_{kl}=0$.
 } }
 {\textbf{Warum stellt man das lineare Gleichungssystem für den auf?\newline} \textcolor<1>{white}{
- Wir wollen nur das Gleichgewicht betrachten, welches nicht mit expliziter Integration lösbar ist
+ Wir wollen nur das Gleichgewicht $\mathop{\!\mathbin\bigtriangleup}u=0$ betrachten, welches nicht mit expliziter Integration lösbar ist. Der Grund ist, dass es sich dabei um eine statische PDE handelt, die nicht mehr von der Zeit abhängt.
+} }
+{\textbf{Wie löst man die Laplace-Gleichung?\newline} \textcolor<1>{white}{
+		Die Laplace-Gleichung ist mittels \chf lösbar. Die Zeitkomplexität ist allerdings mit $\mathcal{O(n^3)}$ recht hoch, sodass unter anderem konjugierte Gradienten verwendet werden können. 
+} }
+{\textbf{Welche Eigenschaft hat die Laplace-Matrix $L$?}\newline} \textcolor<1>{white}{
+	Die $L$ ist sparse: Maximal sind 5 Einträge pro Zeile ungleich 0, $L$ ist symmetrisch und positiv/negativ definit.
 } }
 }%
 
