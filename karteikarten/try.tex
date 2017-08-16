@@ -239,16 +239,43 @@
 {\textbf{Was sagt die Heat-Equation aus?\newline} \textcolor<1>{white}{
 		Die Heat-Equation beschreibt den Fluss von Wärme in Richtung der Nachbarn.
 } }
-{\textbf{Was ist der implizite Euler?\newline} \textcolor<1>{white}{
+{\textbf{Was ist der implizite Euler? (HEAT)\newline} \textcolor<1>{white}{
 		$u[i,j,t+1]=u[i,j,t]+\delta t \cdot\mathop{\!\mathbin\bigtriangleup}u[i,j,t+1]$\\
 		\textbf{Vorteil:} stabil für jeden Zeitschritt, \textbf{Nachteil:} hoher Rechenaufwand
 } }
-{\textbf{Was ist der explizite Euler?\newline} \textcolor<1>{white}{
-		Die Heat-Equation beschreibt den Fluss von Wärme in Richtung der Nachbarn.
+{\textbf{Was ist der explizite Euler? (HEAT)\newline} \textcolor<1>{white}{
+		Berechne $v[i,j]=t\mathop{\!\mathbin\bigtriangleup}u=\dot{u}$ und anschließend $u[i,j,t+1]=u[i,j,t]+\delta t\cdot \mathop{\!\mathbin\bigtriangleup}u[i,j,t]$\\
+		\textbf{Vorteil:} schnell und einfach zu implementieren, \textbf{Nachteil:} instabil bei großen Zeitsprüngen, da $\delta t$ nicht mehr konvergiert, der Fehler stark zunimmt und somit keine Lösung mehr möglich ist.
+} }
+{\textbf{Was passiert bei zu hohen Schritten im expliziten Euler?\newline} \textcolor<1>{white}{
+		Er konvergiert nicht mehr, da die Nachbarn einen zu hohen Einfluss auf die Lösung haben. Um ihn trotzdem zu berechnen, müsste man mehr Nachbarn in Betracht ziehen, da bei zu hohen Zeitschritten auch weit entfernte Nachbarn einen Einfluss auf den betrachteten Punkt haben.
+} }
+{\textbf{Was ist die CFL-Bedingung?\newline} \textcolor<1>{white}{
+		$\delta t\leq\frac{h}{\|v\|}$, mit Informationskonstante $\|v\|$.
+} }
+{\textbf{Wann ist der Gleichgewichtszustand erreicht?\newline} \textcolor<1>{white}{
+		Der implizite Euler konvergiert immer gegen den statischen Gleichgewichtszustand der Heat-Equation, der durch die Laplace-Equation $\mathop{\!\mathbin\bigtriangleup}u=0$ beschrieben wird. Während der explizite Euler nur bei ausreichend kleinen Zeitschritten konvergiert.
+} }
+{\textbf{Was passiert mit den Randpunkten? (HEAT)\newline} \textcolor<1>{white}{
+		Die Randpunkte bleiben konstant.
+} }
+{\textbf{Wie stellt man das lineare Gleichungssystem für die Laplace-Gleichung auf?\newline} \textcolor<1>{white}{
+	Jeder Punkt im Gitter ist eine Unbekannte, die berechnet werden muss. Wir haben also bei einem $(N$ x $N)$ Gitter $(N-2)$x$(N-2)$ Unbekannte (Randpunkte verändern sich nicht). Dies führt zu einem $(N-2)^2$ x $(N-2)^2$ Gleichungssystem $-Lu=b$.
+	$u$ ist ein Spaltenvektor in dem die neuen Werte $u$ für das Gitter stehen. Die Reihenfolge, in der die Gitterpunkte in $u$ stehen, führt zu einer Index Abbildung: $u_k=u(i,j)$ mit $k=idx(i,j)=(i-1)+(j-2)\cdot(N-2)$.
+	Für die Matrix L gilt: $l_{kk}=4, l_{kl}=-1/h^2$, wenn (\={i}, \={j}) Nachbarn von i, j und $l$=idx(\={i},\={j}) sonst $l_{kl}=0$.
+} }
+{\textbf{Warum stellt man das lineare Gleichungssystem für den auf?\newline} \textcolor<1>{white}{
+ Wir wollen nur das Gleichgewicht $\mathop{\!\mathbin\bigtriangleup}u=0$ betrachten, welches nicht mit expliziter Integration lösbar ist. Der Grund ist, dass es sich dabei um eine statische PDE handelt, die nicht mehr von der Zeit abhängt.
+} }
+{\textbf{Wie löst man die Laplace-Gleichung?\newline} \textcolor<1>{white}{
+		Die Laplace-Gleichung ist mittels \chf lösbar. Die Zeitkomplexität ist allerdings mit $\mathcal{O(n^3)}$ recht hoch, sodass unter anderem konjugierte Gradienten verwendet werden können. 
+} }
+{\textbf{Welche Eigenschaft hat die Laplace-Matrix $L$?}\newline} \textcolor<1>{white}{
+	Die $L$ ist sparse: Maximal sind 5 Einträge pro Zeile ungleich 0, $L$ ist symmetrisch und positiv/negativ definit.
 } }
 }%
 
-\newcommand*{\NumberOfQuizes}{20}%
+\newcommand*{\NumberOfQuizes}{30}%
 \pgfmathrandomlistcopy{Words}{WordsMaster}
 
 \foreach \QuizNumber in {1,...,\NumberOfQuizes} {%
