@@ -275,7 +275,7 @@
 	Die $L$ ist sparse: Maximal sind 5 Einträge pro Zeile ungleich 0, $L$ ist symmetrisch und positiv/negativ definit.
 } }
 {\textbf{Wie funktionieren konjugierte Gradienten?}\newline \textcolor<1>{white}{
-	beliebige Suchrichtung $p_n$ für die Minimierung von $f(x)$ zulassen: $x_{n+1}+\alpha_np_n$, wobei $\alpha_n$ ähnlich zum Gradientenabstieg bestimmt werde kann: $\alpha_n=\frac{p_n^Tr_n}{p_n^TAp_n}$. Wenn $p_n$ gleich dem negativen Gradienten $-\nabla f(x)=r_n$ entspricht, ist dies äquiv. zum Gradientenabstieg. 
+	beliebige Suchrichtung $p_n$ für die Minimierung von $f(x)$ zulassen: $x_{n+1}+\alpha_np_n$, wobei $\alpha_n$ ähnlich zum Gradientenabstieg bestimmt werde kann: $\alpha_n=\frac{r_n^Tr_n}{p_n^TAp_n}$. Wenn $p_n$ gleich dem negativen Gradienten $-\nabla f(x)=r_n$ entspricht, ist dies äquiv. zum Gradientenabstieg. 
 } }
 {\textbf{Wann werden konjugierte Gradienten angewendet?\newline} \textcolor<1>{white}{
 	Konjugierte Gradienten werden angewendet, wenn die Matrix $A^(m\times m)$ sehr groß ist. (z.B.: $m>10000$).
@@ -291,9 +291,15 @@
 			Elliptische Konvergenz, \mbox{beliebiger Startpunkt} &Langsame Konvergenz
 		\end{tabularx}
 } }
+{\textbf{Wie ist der Gradientenabstieg definiert?\newline} \textcolor<1>{white}{
+		Löse $Ax=b, \text{ mit } A \;s.p.d.$ formuliert als Minimierung $f(x)=\frac{1}{2}x^TAx-b^Tx \rightarrow \text{min}$.\\
+		$f(x)$ hat ein Minimum, wenn gilt: $0=\nabla f(x)=Ax-b$.\\
+		Minimiere $f(x)$ iterativ, indem bei jedem Schritt von $x_n$ ein Stückchen im Paraboloid heruntergelaufen wird. Dies entspricht dem negativen Gradienten $-\nabla f(x)$.\\
+		Da $r_n=b-Ax_n=-\nabla f(x)$ folgt $r_n$ als Abstiegsrichtung der n-ten Iteration und $x_{n+1}=x_n+\alpha_nr_n$, mit $\alpha_n=\text{arg min}_\alpha f(x_{n+1})$.
+} }
 }%
 
-\newcommand*{\NumberOfQuizes}{45}%
+\newcommand*{\NumberOfQuizes}{46}%
 \pgfmathrandomlistcopy{Words}{WordsMaster}
 
 \foreach \QuizNumber in {1,...,\NumberOfQuizes} {%
